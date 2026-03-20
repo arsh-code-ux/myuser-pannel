@@ -59,7 +59,7 @@ export function MyInformation() {
       </div>
 
       {/* Hero Header Section with Bird Background */}
-      <div className="relative w-full py-24 md:py-32 overflow-hidden" style={{
+      <div className="relative w-full py-24 md:py-40 overflow-hidden" style={{
         backgroundImage: `url(${birds})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -69,11 +69,11 @@ export function MyInformation() {
         {/* Content */}
         <div className="luxury-container relative z-10 text-center flex items-center justify-between gap-8">
           <div className="flex-1">
-            <h1 className="text-5xl md:text-6xl font-serif font-bold text-black mb-4 drop-shadow-lg">
+            <h1 className="text-6xl md:text-8xl font-serif font-black text-black mb-4 drop-shadow-lg" style={{ letterSpacing: '-0.02em' }}>
               MY INFORMATION
             </h1>
-            <div className="w-32 h-1.5 bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-300 mx-auto mb-8"></div>
-            <p className="text-black text-lg max-w-2xl mx-auto leading-relaxed drop-shadow-md font-bold">
+            <div className="w-40 h-2 bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-300 mx-auto mb-8"></div>
+            <p className="text-black text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed drop-shadow-md font-black">
               Manage your personal details, preferences, and account settings. Keep your information updated to enhance your experience on our platform.
             </p>
           </div>
@@ -82,7 +82,7 @@ export function MyInformation() {
             <img 
               src={bird1} 
               alt="Artist" 
-              className="rounded-full w-64 h-64 object-cover shadow-lg border-4 border-white"
+              className="rounded-full w-80 h-80 object-cover shadow-lg border-4 border-white"
               style={{ filter: 'none' }}
             />
           </div>

@@ -1,287 +1,108 @@
 import React, { useState } from 'react';
-import { ChevronRight, Home, Plus, MapPin, Phone, Edit2, Trash2 } from 'lucide-react';
-import videoFile from '../WhatsApp Video 2026-03-19 at 7.35.50 PM.mp4';
+import addressBg from '../address.jpg';
 
 export function MyAddress() {
   const [addresses, setAddresses] = useState([]);
-  const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    street: '',
-    city: '',
-    state: '',
-    zipCode: '',
-    country: '',
-    phone: '',
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleAddAddress = () => {
-    if (formData.name && formData.street && formData.city) {
-      setAddresses([...addresses, { ...formData, id: Date.now() }]);
-      setFormData({
-        name: '',
-        street: '',
-        city: '',
-        state: '',
-        zipCode: '',
-        country: '',
-        phone: '',
-      });
-      setShowForm(false);
-    }
-  };
-
-  const handleDeleteAddress = (id) => {
-    setAddresses(addresses.filter(addr => addr.id !== id));
-  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-100 via-yellow-50 to-orange-50 relative overflow-hidden">
-      {/* Video Background - Right Side */}
-      <video 
-        style={{
-          position: 'fixed',
-          top: 0,
-          right: -100,
-          width: '60%',
-          height: '100%',
-          objectFit: 'cover',
-          zIndex: 0,
-          opacity: 0.9
-        }}
-        autoPlay 
-        loop 
-        muted
-        playsInline
-        disablePictureInPicture
-      >
-        <source src={videoFile} type="video/mp4" />
-      </video>
-
-      {/* Content - Left Side */}
-      <div className="relative z-10 max-w-2xl">
-        {/* Breadcrumb */}
-        <div className="px-6 md:px-12 py-4 flex items-center gap-2 text-sm text-gray-700">
-          <Home className="w-4 h-4" />
-          <span>My Account</span>
-          <ChevronRight className="w-4 h-4" />
-          <span className="font-medium">My addresses</span>
-        </div>
-
-        {/* Hero Section */}
-        <div className="px-6 md:px-12 py-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
-            Manage Your <br/> Delivery Addresses
+    <div className="h-screen w-screen overflow-hidden bg-stone-100 relative flex flex-col" style={{
+      backgroundImage: `url(${addressBg})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed',
+      backgroundRepeat: 'no-repeat'
+    }}>
+      {/* Overlay for better readability */}
+      <div className="absolute inset-0 bg-black/30 z-0"></div>
+      
+      <div className="relative z-10 flex flex-col h-full w-full p-6 md:p-12">
+        {/* Heading - My Address */}
+        <div className="text-right pb-4 flex-shrink-0">
+          <h1 className="text-5xl md:text-6xl font-black text-gray-900" style={{ 
+            fontFamily: 'Arial, sans-serif',
+            letterSpacing: '-0.02em'
+          }}>
+            My Address
           </h1>
-          <p className="text-gray-700 text-base mb-8 max-w-lg">
-            Our team of registered nurses and skilled healthcare professionals provide in-home nursing
-          </p>
-          
-          {/* Buttons */}
-          <div className="flex flex-wrap gap-4">
-            {!showForm && (
-              <>
-                <button
-                  onClick={() => setShowForm(true)}
-                  className="bg-orange-400 hover:bg-orange-500 text-white px-8 py-3 rounded-full font-semibold transition duration-300 shadow-lg"
-                >
-                  Add Address
-                </button>
-                <button className="bg-white hover:bg-gray-100 text-gray-800 px-8 py-3 rounded-full font-semibold transition duration-300 border-2 border-gray-300">
-                  Save Details
-                </button>
-              </>
-            )}
-          </div>
         </div>
 
-        {/* Top List / Addresses Section */}
-        {addresses.length > 0 && (
-          <div className="px-6 md:px-12 py-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">
-              Your Addresses
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {addresses.map((address) => (
-                <div
-                  key={address.id}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-orange-400"
-                >
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{address.name}</h3>
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-start gap-2 text-sm text-gray-700">
-                      <MapPin className="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" />
-                      <div>
-                        <p>{address.street}</p>
-                        <p className="text-xs">{address.city}, {address.state} {address.zipCode}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-700">
-                      <Phone className="w-4 h-4 text-orange-500" />
-                      <p>{address.phone}</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-2 pt-4 border-t border-gray-200">
-                    <button className="flex-1 p-2 hover:bg-gray-100 rounded transition flex items-center justify-center gap-1 text-sm">
-                      <Edit2 className="w-4 h-4 text-gray-600" />
-                      <span>Edit</span>
-                    </button>
-                    <button
-                      onClick={() => handleDeleteAddress(address.id)}
-                      className="flex-1 p-2 hover:bg-red-100 rounded transition flex items-center justify-center gap-1 text-sm"
-                    >
-                      <Trash2 className="w-4 h-4 text-red-600" />
-                      <span>Delete</span>
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Add Address Form */}
-        {showForm && (
-          <div className="px-6 md:px-12 py-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              Add New Address
-            </h2>
-
-            <div className="bg-white rounded-2xl p-8 shadow-lg max-w-2xl">
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    placeholder="Enter full name"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Street Address *</label>
-                  <input
-                    type="text"
-                    name="street"
-                    value={formData.street}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    placeholder="Enter street address"
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">City *</label>
-                    <input
-                      type="text"
-                      name="city"
-                      value={formData.city}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-                      placeholder="Enter city"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">State</label>
-                    <input
-                      type="text"
-                      name="state"
-                      value={formData.state}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-                      placeholder="Enter state"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Zip Code</label>
-                    <input
-                      type="text"
-                      name="zipCode"
-                      value={formData.zipCode}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-                      placeholder="Enter zip code"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Country</label>
-                    <input
-                      type="text"
-                      name="country"
-                      value={formData.country}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-                      placeholder="Enter country"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    placeholder="Enter phone number"
-                  />
+        {/* Envelope Style Card Container - Centered */}
+        <div className="flex items-center justify-center flex-grow">
+        <div className="w-full max-w-6xl px-4">
+          {/* Envelope - Red Background */}
+          <div className="bg-red-900 rounded-3xl shadow-2xl overflow-hidden">
+            {/* Envelope Flap (Triangle top) */}
+            <div className="relative h-32 bg-red-800 flex items-end justify-center">
+              {/* White content inside flap */}
+              <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center">
+                <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center text-3xl font-light text-gray-400">
+                  ✦
                 </div>
               </div>
+            </div>
 
-              <div className="flex gap-3 mt-6">
-                <button
-                  onClick={handleAddAddress}
-                  className="flex-1 px-6 py-3 bg-orange-400 hover:bg-orange-500 text-white rounded-full font-semibold transition"
-                >
-                  Save Address
-                </button>
-                <button
-                  onClick={() => setShowForm(false)}
-                  className="flex-1 px-6 py-3 bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-full font-semibold transition"
-                >
-                  Cancel
-                </button>
+            {/* Main Content Area - White */}
+            <div className="bg-white p-8 md:p-12">
+              <div className="text-center space-y-6">
+                {/* Main Heading */}
+                <h2 className="text-3xl md:text-5xl font-black text-gray-900" style={{
+                  fontFamily: 'Arial, sans-serif',
+                  letterSpacing: '-0.02em'
+                }}>
+                  FRAGMENTS<br/>OF PERSONAL<br/>ALCHEMY
+                </h2>
+
+                {/* Decorative Line */}
+                <div className="flex justify-center">
+                  <div className="w-24 h-1 bg-gray-900"></div>
+                </div>
+
+                {/* Subtitle/Description */}
+                <p className="text-gray-700 text-sm md:text-base max-w-xl mx-auto leading-relaxed font-light">
+                  Manage your delivery addresses with elegance and precision. Each address is a fragment of your personal journey, stored with care.
+                </p>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-wrap gap-3 justify-center pt-4">
+                  <button className="px-10 py-3 bg-gray-900 text-white rounded-full font-semibold text-sm md:text-base hover:bg-gray-800 transition duration-300">
+                    Add Address
+                  </button>
+                  <button className="px-10 py-3 bg-gray-200 text-gray-900 rounded-full font-semibold text-sm md:text-base hover:bg-gray-300 transition duration-300 border-2 border-gray-900">
+                    View All
+                  </button>
+                </div>
+
+                {/* Decorative Signature Style Text */}
+                <div className="pt-4 text-gray-600 italic text-lg md:text-xl font-light" style={{
+                  fontFamily: 'cursive'
+                }}>
+                  Journey
+                </div>
               </div>
             </div>
-          </div>
-        )}
 
-        {/* Best Address For Info Section */}
-        {!showForm && addresses.length === 0 && (
-          <div className="px-6 md:px-12 py-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              No Addresses Added Yet
-            </h2>
-            <p className="text-gray-700 mb-6 max-w-lg">
-              Add your delivery addresses to get started. You can manage multiple addresses for different locations.
-            </p>
-            <div className="bg-white rounded-2xl p-8 border-l-4 border-orange-400">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">
-                ✓ Save time with saved addresses
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Store your home, office, and other frequent delivery locations for quick checkout.
+            {/* Bottom Red Section */}
+            <div className="bg-red-900 h-16 flex items-center justify-center">
+              <p className="text-white text-xl font-light tracking-widest">
+                MARTSEVAYA
               </p>
             </div>
           </div>
-        )}
+
+          {/* Address Cards Below */}
+          {addresses.length > 0 && (
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+              {addresses.map((address, index) => (
+                <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border-l-4 border-red-900">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{address.name}</h3>
+                  <p className="text-gray-600 text-sm">{address.street}</p>
+                  <p className="text-gray-600 text-sm">{address.city}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
       </div>
     </div>
   );
