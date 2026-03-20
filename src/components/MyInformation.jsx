@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ChevronRight, Home } from 'lucide-react';
 import back2 from '../back2.jpg';
+import birds from '../birds.jpg';
+import bird1 from '../bird1.jpg';
 
 export function MyInformation() {
   const [formData, setFormData] = useState({
@@ -56,19 +58,34 @@ export function MyInformation() {
         <span className="text-gray-900 font-medium">My information</span>
       </div>
 
-      {/* Hero Header Section with Golden Background */}
-      <div className="relative w-full py-24 md:py-32 overflow-hidden" style={{ backgroundColor: 'burlywood' }}>
-        {/* Golden Background - Gradient effect */}
-
+      {/* Hero Header Section with Bird Background */}
+      <div className="relative w-full py-24 md:py-32 overflow-hidden" style={{
+        backgroundImage: `url(${birds})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        filter: 'none'
+      }}>
         {/* Content */}
-        <div className="luxury-container relative z-10 text-center">
-          <h1 className="text-5xl md:text-6xl font-serif font-bold text-white mb-4 drop-shadow-lg">
-            MY INFORMATION
-          </h1>
-          <div className="w-32 h-1.5 bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-300 mx-auto mb-8"></div>
-          <p className="text-white text-lg max-w-3xl mx-auto leading-relaxed drop-shadow-md font-bold">
-            Manage your personal details, preferences, and account settings. Keep your information updated to enhance your experience on our platform.
-          </p>
+        <div className="luxury-container relative z-10 text-center flex items-center justify-between gap-8">
+          <div className="flex-1">
+            <h1 className="text-5xl md:text-6xl font-serif font-bold text-black mb-4 drop-shadow-lg">
+              MY INFORMATION
+            </h1>
+            <div className="w-32 h-1.5 bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-300 mx-auto mb-8"></div>
+            <p className="text-black text-lg max-w-2xl mx-auto leading-relaxed drop-shadow-md font-bold">
+              Manage your personal details, preferences, and account settings. Keep your information updated to enhance your experience on our platform.
+            </p>
+          </div>
+          {/* Circular Artist Image */}
+          <div className="flex-shrink-0 hidden md:block">
+            <img 
+              src={bird1} 
+              alt="Artist" 
+              className="rounded-full w-64 h-64 object-cover shadow-lg border-4 border-white"
+              style={{ filter: 'none' }}
+            />
+          </div>
         </div>
       </div>
 
