@@ -6,7 +6,7 @@ import { MyInformation } from './components/MyInformation'
 import { MyAddress } from './components/MyAddress'
 import { MyPurchases } from './components/MyPurchases'
 import { MyStore } from './components/MyStore'
-import { FeaturedExhibition } from './components/FeaturedExhibition'
+import { ExhibitionsPage } from './components/ExhibitionsPage'
 import { BestsellerProducts } from './components/BestsellerProducts'
 import { ArtworkGallery } from './components/ArtworkGallery'
 import { FeaturedArtists } from './components/FeaturedArtists'
@@ -24,7 +24,6 @@ function App() {
       
       {currentPage === 'home' && (
         <>
-          <FeaturedExhibition />
           <BestsellerProducts />
           <ArtworkGallery />
           <FeaturedArtists />
@@ -33,6 +32,10 @@ function App() {
           <ConversationsSection />
           <Footer />
         </>
+      )}
+      
+      {currentPage === 'exhibitions' && (
+        <ExhibitionsPage />
       )}
       
       {currentPage === 'my-information' && (

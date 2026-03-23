@@ -143,7 +143,7 @@ export function Header({ onNavigate }) {
             <button className="hover:text-gray-600 transition whitespace-nowrap">Sculptures</button>
             <button className="hover:text-gray-600 transition whitespace-nowrap">Photography</button>
             <button className="hover:text-gray-600 transition whitespace-nowrap">Collectibles</button>
-            <button className="hover:text-gray-600 transition whitespace-nowrap">Exhibitions</button>
+            <button onClick={() => onNavigate('exhibitions')} className="hover:text-gray-600 transition whitespace-nowrap">Exhibitions</button>
           </div>
         </div>
       </div>
