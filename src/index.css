@@ -170,3 +170,147 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+/* ===== RESPONSIVE UTILITIES ===== */
+
+/* Mobile First - Base Styles */
+@media (max-width: 640px) {
+  .luxury-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.875rem; /* 30px */
+    line-height: 1.2;
+  }
+  
+  h2 {
+    font-size: 1.5rem; /* 24px */
+  }
+  
+  h3 {
+    font-size: 1.25rem; /* 20px */
+  }
+  
+  p {
+    font-size: 0.875rem; /* 14px */
+  }
+  
+  .section-title {
+    font-size: 1.875rem;
+  }
+  
+  .section-subtitle {
+    font-size: 0.75rem;
+  }
+}
+
+/* Tablet Styles (640px - 1024px) */
+@media (min-width: 640px) and (max-width: 1024px) {
+  .luxury-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem; /* 40px */
+  }
+  
+  h2 {
+    font-size: 1.875rem; /* 30px */
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Desktop Styles (1024px+) */
+@media (min-width: 1024px) {
+  .luxury-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  h1 {
+    font-size: 3rem; /* 48px */
+  }
+  
+  h2 {
+    font-size: 2rem; /* 32px */
+  }
+  
+  .section-title {
+    font-size: 3rem;
+  }
+}
+
+/* Form Elements Responsive */
+input,
+select,
+textarea {
+  font-size: 16px; /* Prevents zoom on iOS */
+}
+
+/* Button Responsive */
+button {
+  min-height: 44px; /* Touch target minimum */
+}
+
+@media (max-width: 640px) {
+  button {
+    min-width: 44px;
+  }
+}
+
+/* Grid Responsive Defaults */
+.grid {
+  @apply gap-2 md:gap-4 lg:gap-6;
+}
+
+/* Padding Utilities Responsive */
+.responsive-px {
+  @apply px-4 md:px-6 lg:px-8;
+}
+
+.responsive-py {
+  @apply py-4 md:py-6 lg:py-8;
+}
+
+/* Margin Utilities Responsive */
+.responsive-mb {
+  @apply mb-4 md:mb-6 lg:mb-8;
+}
+
+.responsive-mt {
+  @apply mt-4 md:mt-6 lg:mt-8;
+}
+
+/* Text Responsive */
+.text-responsive-sm {
+  @apply text-xs md:text-sm lg:text-base;
+}
+
+.text-responsive-base {
+  @apply text-sm md:text-base lg:text-lg;
+}
+
+.text-responsive-lg {
+  @apply text-base md:text-lg lg:text-xl;
+}
+
+.text-responsive-xl {
+  @apply text-lg md:text-xl lg:text-2xl;
+}
+
+.text-responsive-2xl {
+  @apply text-xl md:text-2xl lg:text-3xl;
+}
+
+/* Mobile Container */
+@media (max-width: 640px) {
+  .luxury-container {
+    max-width: 100%;
+  }
+}

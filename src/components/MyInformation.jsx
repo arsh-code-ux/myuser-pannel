@@ -51,15 +51,15 @@ export function MyInformation() {
   return (
     <div className="min-h-screen bg-white">
       {/* Breadcrumb */}
-      <div className="luxury-container py-6 flex items-center gap-2 text-sm text-gray-600">
-        <Home className="w-4 h-4" />
-        <span>My Account</span>
-        <ChevronRight className="w-4 h-4" />
-        <span className="text-gray-900 font-medium">My information</span>
+      <div className="luxury-container py-4 md:py-6 flex items-center gap-2 text-xs md:text-sm text-gray-600 px-4 md:px-6 overflow-x-auto">
+        <Home className="w-3 md:w-4 h-3 md:h-4 flex-shrink-0" />
+        <span className="whitespace-nowrap">My Account</span>
+        <ChevronRight className="w-3 md:w-4 h-3 md:h-4 flex-shrink-0" />
+        <span className="text-gray-900 font-medium whitespace-nowrap">My information</span>
       </div>
 
       {/* Hero Header Section with Bird Background */}
-      <div className="relative w-full py-24 md:py-40 overflow-hidden" style={{
+      <div className="relative w-full py-12 md:py-24 lg:py-40 overflow-hidden" style={{
         backgroundImage: `url(${birds})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -67,13 +67,13 @@ export function MyInformation() {
         filter: 'none'
       }}>
         {/* Content */}
-        <div className="luxury-container relative z-10 text-center flex items-center justify-between gap-8">
+        <div className="luxury-container relative z-10 text-center flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-8 px-4 md:px-6">
           <div className="flex-1">
-            <h1 className="text-6xl md:text-8xl font-serif font-black text-black mb-4 drop-shadow-lg" style={{ letterSpacing: '-0.02em' }}>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-serif font-black text-black mb-2 md:mb-4 drop-shadow-lg" style={{ letterSpacing: '-0.02em' }}>
               MY INFORMATION
             </h1>
-            <div className="w-40 h-2 bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-300 mx-auto mb-8"></div>
-            <p className="text-black text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed drop-shadow-md font-black">
+            <div className="w-24 md:w-40 h-1 md:h-2 bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-300 mx-auto mb-3 md:mb-8"></div>
+            <p className="text-black text-sm md:text-lg lg:text-xl xl:text-2xl max-w-2xl mx-auto leading-relaxed drop-shadow-md font-black">
               Manage your personal details, preferences, and account settings. Keep your information updated to enhance your experience on our platform.
             </p>
           </div>
@@ -82,7 +82,7 @@ export function MyInformation() {
             <img 
               src={bird1} 
               alt="Artist" 
-              className="rounded-full w-80 h-80 object-cover shadow-lg border-4 border-white"
+              className="rounded-full w-48 md:w-64 lg:w-80 h-48 md:h-64 lg:h-80 object-cover shadow-lg border-4 border-white"
               style={{ filter: 'none' }}
             />
           </div>
@@ -90,36 +90,36 @@ export function MyInformation() {
       </div>
 
       {/* Main Content */}
-      <div className="luxury-container py-12 md:py-20">
+      <div className="luxury-container py-8 md:py-12 lg:py-20 px-4 md:px-6">
 
         {/* Personal Information Section */}
-        <div className="mb-20 px-4 md:px-8 lg:px-12 py-8 bg-white rounded-lg border border-gray-100">
-          <h2 className="text-2xl md:text-3xl font-serif font-bold text-black mb-8 pb-4 border-b-2 border-gray-200">
+        <div className="mb-12 md:mb-20 px-3 md:px-4 lg:px-8 py-6 md:py-8 bg-white rounded-lg border border-gray-100">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-black mb-4 md:mb-8 pb-3 md:pb-4 border-b-2 border-gray-200">
             PERSONAL INFORMATION
           </h2>
 
-          <div className="max-w-3xl mx-auto space-y-6">
+          <div className="max-w-3xl mx-auto space-y-4 md:space-y-6">
             {/* Name Fields */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Last name</label>
+                <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1 md:mb-2">Last name</label>
                 <input
                   type="text"
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition text-sm"
+                  className="w-full px-3 md:px-4 py-2 md:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition text-xs md:text-sm"
                   placeholder="Enter your last name"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">First name</label>
+                <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1 md:mb-2">First name</label>
                 <input
                   type="text"
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition text-sm"
+                  className="w-full px-3 md:px-4 py-2 md:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition text-xs md:text-sm"
                   placeholder="Enter your first name"
                 />
               </div>
@@ -127,8 +127,8 @@ export function MyInformation() {
 
             {/* Date of Birth */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Date of Birth</label>
-              <div className="grid grid-cols-3 gap-4">
+              <label className="block text-xs md:text-sm font-medium text-gray-700 mb-2 md:mb-3">Date of Birth</label>
+              <div className="grid grid-cols-3 gap-2 md:gap-4">
                 <div>
                   <label className="block text-xs text-gray-600 mb-1">Month</label>
                   <input
@@ -136,7 +136,7 @@ export function MyInformation() {
                     name="month"
                     value={formData.month}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition text-sm"
+                    className="w-full px-2 md:px-4 py-1.5 md:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition text-xs md:text-sm"
                     placeholder="MM"
                   />
                 </div>
@@ -147,7 +147,7 @@ export function MyInformation() {
                     name="day"
                     value={formData.day}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition text-sm"
+                    className="w-full px-2 md:px-4 py-1.5 md:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition text-xs md:text-sm"
                     placeholder="DD"
                   />
                 </div>

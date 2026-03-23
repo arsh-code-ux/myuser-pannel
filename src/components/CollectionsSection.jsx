@@ -15,19 +15,19 @@ export function CollectionsSection() {
   ];
 
   return (
-    <section className="py-16 md:py-24">
-      <div className="luxury-container">
-        <div className="mb-12">
-          <p className="section-subtitle">Curated Collections</p>
-          <h2 className="section-title">Collection Highlights</h2>
+    <section className="py-8 md:py-16 lg:py-24">
+      <div className="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
+        <div className="mb-8 md:mb-12">
+          <p className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mb-2 md:mb-3">Curated Collections</p>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black">Collection Highlights</h2>
         </div>
 
         {/* Collections Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 md:gap-3 lg:gap-4 mb-8 md:mb-12">
           {collections.map((collection) => (
             <div
               key={collection.id}
-              className="rounded-lg overflow-hidden aspect-square flex items-end p-6 text-white hover:shadow-xl transition-shadow cursor-pointer group relative"
+              className="rounded-lg overflow-hidden aspect-square flex items-end p-3 md:p-4 lg:p-6 text-white hover:shadow-xl transition-shadow cursor-pointer group relative"
             >
               <img 
                 src={collection.image} 
@@ -36,15 +36,15 @@ export function CollectionsSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
               <div className="relative z-10">
-                <h3 className="font-serif text-lg font-bold">{collection.name}</h3>
-                <p className="text-xs opacity-90 group-hover:opacity-100 transition">{collection.description}</p>
+                <h3 className="font-serif text-xs md:text-sm lg:text-lg font-bold">{collection.name}</h3>
+                <p className="text-xs opacity-90 group-hover:opacity-100 transition line-clamp-2">{collection.description}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <a href="#" className="luxury-button">Explore all collections →</a>
+        <div className="text-center">
+          <a href="#" className="px-6 md:px-8 py-2 md:py-2.5 border border-black bg-black text-white font-medium rounded-full hover:bg-white hover:text-black transition text-xs md:text-sm inline-block">Explore all collections →</a>
         </div>
       </div>
     </section>
