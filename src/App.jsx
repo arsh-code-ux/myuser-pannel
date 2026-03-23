@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { Header } from './components/Header'
 import { MyInformation } from './components/MyInformation'
 import { MyAddress } from './components/MyAddress'
+import { MyPurchases } from './components/MyPurchases'
+import { MyStore } from './components/MyStore'
 import { FeaturedExhibition } from './components/FeaturedExhibition'
 import { BestsellerProducts } from './components/BestsellerProducts'
 import { ArtworkGallery } from './components/ArtworkGallery'
@@ -43,6 +45,20 @@ function App() {
       {currentPage === 'my-address' && (
         <>
           <MyAddress />
+          <Footer />
+        </>
+      )}
+      
+      {currentPage === 'my-purchases' && (
+        <>
+          <MyPurchases />
+          <Footer />
+        </>
+      )}
+      
+      {currentPage === 'my-store' && (
+        <>
+          <MyStore />
           <Footer />
         </>
       )}

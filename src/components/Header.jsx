@@ -15,6 +15,16 @@ export function Header({ onNavigate }) {
     setIsAccountDropdownOpen(false);
   };
 
+  const handleMyPurchases = () => {
+    onNavigate('my-purchases');
+    setIsAccountDropdownOpen(false);
+  };
+
+  const handleMyStore = () => {
+    onNavigate('my-store');
+    setIsAccountDropdownOpen(false);
+  };
+
   const handleHome = () => {
     onNavigate('home');
   };
@@ -69,11 +79,11 @@ export function Header({ onNavigate }) {
                       <User className="w-4 h-4" />
                       My Address
                     </button>
-                    <button className="w-full px-4 py-3 text-left text-sm font-medium text-gray-900 hover:bg-gray-50 transition flex items-center gap-2">
+                    <button onClick={handleMyPurchases} className="w-full px-4 py-3 text-left text-sm font-medium text-gray-900 hover:bg-gray-50 transition flex items-center gap-2">
                       <ShoppingCart className="w-4 h-4" />
                       My Purchase
                     </button>
-                    <button className="w-full px-4 py-3 text-left text-sm font-medium text-gray-900 hover:bg-gray-50 transition flex items-center gap-2">
+                    <button onClick={handleMyStore} className="w-full px-4 py-3 text-left text-sm font-medium text-gray-900 hover:bg-gray-50 transition flex items-center gap-2">
                       <User className="w-4 h-4" />
                       My Store
                     </button>
