@@ -25,6 +25,11 @@ export function Header({ onNavigate }) {
     setIsAccountDropdownOpen(false);
   };
 
+  const handleCreativeHub = () => {
+    onNavigate('creative-hub');
+    setIsAccountDropdownOpen(false);
+  };
+
   const handleHome = () => {
     onNavigate('home');
   };
@@ -87,7 +92,7 @@ export function Header({ onNavigate }) {
                       <User className="w-4 h-4" />
                       My Store
                     </button>
-                    <button className="w-full px-4 py-3 text-left text-sm font-medium text-gray-900 hover:bg-gray-50 transition flex items-center gap-2">
+                    <button onClick={handleCreativeHub} className="w-full px-4 py-3 text-left text-sm font-medium text-gray-900 hover:bg-gray-50 transition flex items-center gap-2">
                       <User className="w-4 h-4" />
                       Creative Hub
                     </button>

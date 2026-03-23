@@ -24,14 +24,6 @@ function App() {
       
       {currentPage === 'home' && (
         <>
-          <FeaturedExhibition />
-          <BestsellerProducts />
-          <ArtworkGallery />
-          <FeaturedArtists />
-          <GalleriesSection />
-          <CollectionsSection />
-          <ConversationsSection />
-          <Footer />
         </>
       )}
       
@@ -59,6 +51,19 @@ function App() {
       {currentPage === 'my-store' && (
         <>
           <MyStore />
+          <Footer />
+        </>
+      )}
+      
+      {currentPage === 'creative-hub' && (
+        <>
+          <FeaturedExhibition />
+          <BestsellerProducts />
+          <ArtworkGallery />
+          <FeaturedArtists />
+          <GalleriesSection />
+          <CollectionsSection />
+          <ConversationsSection />
           <Footer />
         </>
       )}

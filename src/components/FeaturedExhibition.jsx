@@ -5,9 +5,11 @@ import img333 from '../img333.jpg';
 import image444 from '../image444.jpg';
 import image555 from '../image555.jpg';
 import history from '../history.jpg';
+import { ExhibitionGallery } from './ExhibitionGallery';
 
 export function FeaturedExhibition() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [showGallery, setShowGallery] = useState(false);
 
   const slides = [
     { id: 1, color: 'bg-blue-500', title: 'The Ancient Citadel', image: img222 },
@@ -48,7 +50,7 @@ export function FeaturedExhibition() {
               <p className="text-gray-700 text-sm md:text-base font-semibold">From March 2026 to May 2026</p>
               <p className="text-black font-bold text-base md:text-lg tracking-wide">ZIGGURAT CULTURAL HERITAGE</p>
             </div>
-            <button className="hidden md:inline-block bg-black text-white px-6 md:px-8 py-2 md:py-3 rounded-full font-semibold hover:bg-gray-800 transition text-sm md:text-base">See all exhibitions</button>
+            <button onClick={() => setShowGallery(true)} className="hidden md:inline-block bg-black text-white px-6 md:px-8 py-2 md:py-3 rounded-full font-semibold hover:bg-gray-800 transition text-sm md:text-base">See all exhibitions</button>
           </div>
 
           {/* Carousel */}
@@ -104,9 +106,11 @@ export function FeaturedExhibition() {
         </div>
 
         <div className="text-center md:hidden px-4">
-          <button className="w-full bg-black text-white px-6 md:px-8 py-2 md:py-3 rounded-full font-semibold hover:bg-gray-800 transition text-sm md:text-base">See artworks from exhibition</button>
+          <button onClick={() => setShowGallery(true)} className="w-full bg-black text-white px-6 md:px-8 py-2 md:py-3 rounded-full font-semibold hover:bg-gray-800 transition text-sm md:text-base">See all exhibitions</button>
         </div>
       </div>
+      
+      {showGallery && <ExhibitionGallery onClose={() => setShowGallery(false)} />}
     </section>
   );
 }
