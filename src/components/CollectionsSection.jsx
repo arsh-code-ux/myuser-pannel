@@ -1,16 +1,17 @@
 import React from 'react';
-import image5 from '../image5.jpg';
-import image4 from '../image4.jpg';
-import image3 from '../image3.jpg';
-import image2 from '../image2.jpg';
+import image1 from '../image 1.jpg';
+import image8 from '../image 8.jpg';
+import image9 from '../image 9.jpg';
+import image11 from '../image 11.jpg';
 import image12 from '../image 12.jpg';
+import image2 from '../image2.jpg';
 
 export function CollectionsSection() {
   const collections = [
-    { id: 1, name: 'Ancient Civilizations', description: 'Artifacts from Egypt, Mesopotamia, and beyond', image: image5 },
-    { id: 2, name: 'Asian Heritage', description: 'Treasures from India, China, and Southeast Asia', image: image4 },
-    { id: 3, name: 'European Classics', description: 'Art and artifacts from Renaissance to Modern', image: image3 },
-    { id: 4, name: 'Contemporary Works', description: 'Modern interpretations of heritage themes', image: image2 },
+    { id: 1, name: 'Ancient Civilizations', description: 'Artifacts from Egypt, Mesopotamia, and beyond', image: image1 },
+    { id: 2, name: 'Asian Heritage', description: 'Treasures from India, China, and Southeast Asia', image: image8 },
+    { id: 3, name: 'European Classics', description: 'Art and artifacts from Renaissance to Modern', image: image9 },
+    { id: 4, name: 'Contemporary Works', description: 'Modern interpretations of heritage themes', image: image11 },
     { id: 5, name: 'Rare Manuscripts', description: 'Historical documents and illuminated texts', image: image12 },
   ];
 

@@ -1,11 +1,16 @@
 import React from 'react';
+import birdsImg from '../birds.jpg';
+import bnvjdrvgImg from '../bnvjdrvg.jpg';
+import booImg from '../boo.jpg';
+import dfjImg from '../dfj.jpg';
+import imaeg14Img from '../imaeg14.jpg';
 
 export function GalleriesSection() {
   const galleries = [
-    { id: 1, name: 'Metropolitan Heritage', location: 'New York - USA', image: 'bg-gray-600' },
-    { id: 2, name: 'Classical Collections', location: 'London - UK', image: 'bg-gray-500' },
-    { id: 3, name: 'Ancient Treasures', location: 'Paris - France', image: 'bg-gray-400' },
-    { id: 4, name: 'Eastern Wonders', location: 'Tokyo - Japan', image: 'bg-gray-450' },
+    { id: 1, name: 'Metropolitan Heritage', location: 'New York - USA', image: birdsImg },
+    { id: 2, name: 'Classical Collections', location: 'London - UK', image: bnvjdrvgImg },
+    { id: 3, name: 'Ancient Treasures', location: 'Paris - France', image: booImg },
+    { id: 4, name: 'Eastern Wonders', location: 'Tokyo - Japan', image: dfjImg },
   ];
 
   const categories = [
@@ -30,8 +35,8 @@ export function GalleriesSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 mb-8 md:mb-12 items-start">
           {/* Featured Gallery */}
           <div className="bg-white p-4 md:p-6 lg:p-8 rounded-lg">
-            <div className="w-full h-40 md:h-48 bg-gradient-to-br from-yellow-900 to-yellow-700 rounded-lg mb-4 md:mb-6 flex items-center justify-center">
-              <div className="text-white text-3xl md:text-4xl font-serif font-bold">⬤</div>
+            <div className="w-full h-40 md:h-48 rounded-lg mb-4 md:mb-6 flex items-center justify-center overflow-hidden">
+              <img src={imaeg14Img} alt="Ziggurat Heritage Gallery" className="w-full h-full object-cover" />
             </div>
             <h3 className="text-lg md:text-xl lg:text-2xl font-serif font-bold mb-1 md:mb-2">Ziggurat Heritage Gallery</h3>
             <p className="text-gray-600 text-xs md:text-sm mb-2 md:mb-4 uppercase">NEW DELHI, INDIA</p>
@@ -62,7 +67,9 @@ export function GalleriesSection() {
                 key={gallery.id}
                 className="flex gap-3 md:gap-4 hover:bg-white p-2 md:p-4 rounded-lg transition cursor-pointer"
               >
-                <div className={`${gallery.image} w-16 md:w-24 h-16 md:h-24 rounded-lg flex-shrink-0`}></div>
+                <div className="w-16 md:w-24 h-16 md:h-24 rounded-lg flex-shrink-0 overflow-hidden">
+                  <img src={gallery.image} alt={gallery.name} className="w-full h-full object-cover" />
+                </div>
                 <div className="min-w-0">
                   <h4 className="font-medium text-xs md:text-sm mb-0.5 md:mb-1 truncate">{gallery.name}</h4>
                   <p className="text-xs text-gray-600">{gallery.location}</p>

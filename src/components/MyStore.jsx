@@ -7,6 +7,12 @@ import step2 from '../2.png';
 import step3 from '../3.png';
 import step4 from '../4.png';
 import informationBg from '../information.jpg';
+import img10 from '../10.png';
+import img11 from '../11.png';
+import img12 from '../12.png';
+import img13 from '../13.png';
+import img14 from '../14.png';
+import img15 from '../15.jpg';
 
 export function MyStore() {
   const [activeStep, setActiveStep] = useState(0);
@@ -106,7 +112,7 @@ export function MyStore() {
                 <div className="mt-12 pt-12 border-t border-gray-200 -mx-8 px-8 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]" style={{ backgroundImage: `url(${informationBg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
                   <div className="absolute inset-0 bg-white/20"></div>
                   <div className="relative z-10 max-w-7xl mx-auto">
-                    <h3 className="text-3xl font-bold text-slate-900 text-center mb-12">What can you sell on Zigguratss?</h3>
+                    <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 text-center mb-12" style={{ textShadow: '0 4px 8px rgba(255, 255, 255, 0.6), 0 2px 4px rgba(255, 255, 255, 0.4)' }}>What can you sell on Zigguratss?</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div className="border border-gray-200 rounded-lg p-10 bg-white/95 shadow-lg backdrop-blur-sm">
                         <div className="text-6xl mb-6 text-center">🖼️</div>
@@ -152,36 +158,36 @@ export function MyStore() {
                 <div className="mb-8">
                   <h3 className="text-lg font-bold text-slate-900 mb-6 text-center">Recommended photo types</h3>
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                      <div className="text-4xl mb-3">📷</div>
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition">
+                      <img src={img10} alt="Frontal view" className="w-80 h-80 mx-auto mb-4 object-contain" />
                       <p className="text-sm font-semibold text-slate-900">Frontal view, background cropped</p>
                     </div>
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                      <div className="text-4xl mb-3">🏠</div>
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition">
+                      <img src={img11} alt="In room view" className="w-80 h-80 mx-auto mb-4 object-contain" />
                       <p className="text-sm font-semibold text-slate-900">In room view</p>
                     </div>
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                      <div className="text-4xl mb-3">✍️</div>
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition">
+                      <img src={img12} alt="Signature" className="w-80 h-80 mx-auto mb-4 object-contain" />
                       <p className="text-sm font-semibold text-slate-900">Signature</p>
                     </div>
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                      <div className="text-4xl mb-3">👁️</div>
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition">
+                      <img src={img13} alt="Side view" className="w-80 h-80 mx-auto mb-4 object-contain" />
                       <p className="text-sm font-semibold text-slate-900">Side view</p>
                     </div>
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                      <div className="text-4xl mb-3">🔍</div>
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition">
+                      <img src={img14} alt="Back view" className="w-80 h-80 mx-auto mb-4 object-contain" />
                       <p className="text-sm font-semibold text-slate-900">Back view</p>
                     </div>
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                      <div className="text-4xl mb-3">🔎</div>
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition">
+                      <img src={img15} alt="Details" className="w-80 h-80 mx-auto mb-4 object-contain" />
                       <p className="text-sm font-semibold text-slate-900">Details</p>
                     </div>
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                      <div className="text-4xl mb-3">🔎</div>
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition">
+                      <img src={img15} alt="Details" className="w-80 h-80 mx-auto mb-4 object-contain" />
                       <p className="text-sm font-semibold text-slate-900">Details</p>
                     </div>
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                      <div className="text-4xl mb-3">🔎</div>
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition">
+                      <img src={img15} alt="Details" className="w-80 h-80 mx-auto mb-4 object-contain" />
                       <p className="text-sm font-semibold text-slate-900">Details</p>
                     </div>
                   </div>
