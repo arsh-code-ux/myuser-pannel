@@ -31,28 +31,28 @@ export function Header({ onNavigate }) {
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="luxury-container py-4">
+      <div className="luxury-container py-3 md:py-4 px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <button onClick={handleHome} className="text-2xl md:text-3xl font-serif font-bold text-black hover:text-gray-700 transition cursor-pointer">
+          <button onClick={handleHome} className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-black hover:text-gray-700 transition cursor-pointer">
             Zigguratss
           </button>
 
           {/* Search Bar - Hidden on mobile */}
-          <div className="hidden md:flex flex-1 mx-8">
+          <div className="hidden md:flex flex-1 mx-4 lg:mx-8">
             <div className="w-full relative">
               <input
                 type="text"
                 placeholder="Search artifacts..."
-                className="w-full px-5 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition"
+                className="w-full px-3 md:px-5 py-2 md:py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition"
               />
             </div>
           </div>
 
           {/* Right Navigation */}
-          <div className="flex items-center gap-6 md:gap-8">
+          <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
             {/* Currency Selector */}
-            <button className="hidden md:flex items-center gap-2 text-sm font-medium hover:text-gray-600 transition">
+            <button className="hidden md:flex items-center gap-2 text-xs md:text-sm font-medium hover:text-gray-600 transition">
               $ USD
             </button>
 
@@ -102,32 +102,32 @@ export function Header({ onNavigate }) {
             </div>
 
             {/* Icons */}
-            <div className="flex items-center gap-4">
-              <Heart className="w-5 h-5 cursor-pointer hover:fill-red-500 hover:text-red-500 transition duration-300" />
-              <ShoppingCart className="w-5 h-5 cursor-pointer hover:text-gray-600 transition duration-300" />
+            <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+              <Heart className="w-4 sm:w-5 h-4 sm:h-5 cursor-pointer hover:fill-red-500 hover:text-red-500 transition duration-300" />
+              <ShoppingCart className="w-4 sm:w-5 h-4 sm:h-5 cursor-pointer hover:text-gray-600 transition duration-300" />
             </div>
 
             {/* Mobile Menu Button */}
-            <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <X className="w-5 sm:w-6 h-5 sm:h-6" /> : <Menu className="w-5 sm:w-6 h-5 sm:h-6" />}
             </button>
           </div>
         </div>
 
         {/* Mobile Search */}
-        <div className="md:hidden mt-4">
+        <div className="md:hidden mt-3">
           <input
             type="text"
             placeholder="Search artifacts..."
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-black"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-black"
           />
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <nav className="md:hidden mt-4 py-4 border-t border-gray-200 space-y-3">
-            <a href="#" className="block text-sm font-medium hover:text-gray-600">Home</a>
-            <a href="#" className="block text-sm font-medium hover:text-gray-600">Collections</a>
+          <nav className="lg:hidden mt-3 py-3 border-t border-gray-200 space-y-2">
+            <a href="#" className="block text-xs sm:text-sm font-medium hover:text-gray-600">Home</a>
+            <a href="#" className="block text-xs sm:text-sm font-medium hover:text-gray-600">Collections</a>
             <a href="#" className="block text-sm font-medium hover:text-gray-600">About</a>
             <a href="#" className="block text-sm font-medium hover:text-gray-600">Sign in</a>
           </nav>
@@ -143,7 +143,7 @@ export function Header({ onNavigate }) {
             <button className="hover:text-gray-600 transition whitespace-nowrap">Sculptures</button>
             <button className="hover:text-gray-600 transition whitespace-nowrap">Photography</button>
             <button className="hover:text-gray-600 transition whitespace-nowrap">Collectibles</button>
-            <button onClick={() => onNavigate('exhibitions')} className="hover:text-gray-600 transition whitespace-nowrap">Exhibitions</button>
+            <button className="hover:text-gray-600 transition whitespace-nowrap">Exhibitions</button>
           </div>
         </div>
       </div>

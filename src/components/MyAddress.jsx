@@ -145,7 +145,7 @@ export function MyAddress() {
       </div>
 
       {/* Hero Header Section with Address Background */}
-      <div className="relative w-full py-24 md:py-40 overflow-hidden" style={{
+      <div className="relative w-full py-12 md:py-24 lg:py-40 overflow-hidden" style={{
         backgroundImage: `url(${addressBg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -153,13 +153,13 @@ export function MyAddress() {
         filter: 'none'
       }}>
         {/* Content */}
-        <div className="luxury-container relative z-10 text-center">
+        <div className="luxury-container relative z-10 text-center px-4 md:px-6">
           <div className="flex-1">
-            <h1 className="text-6xl md:text-8xl font-serif font-black text-black mb-4 drop-shadow-lg" style={{ letterSpacing: '-0.02em' }}>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-serif font-black text-black mb-3 md:mb-4 drop-shadow-lg" style={{ letterSpacing: '-0.02em' }}>
               MY ADDRESS
             </h1>
-            <div className="w-40 h-2 bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-300 mx-auto mb-8"></div>
-            <p className="text-black text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed drop-shadow-md font-black">
+            <div className="w-32 md:w-40 h-1.5 md:h-2 bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-300 mx-auto mb-4 md:mb-8"></div>
+            <p className="text-black text-base sm:text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto leading-relaxed drop-shadow-md font-black px-4">
               Manage your address details and delivery information. Keep your address updated to ensure smooth transactions on our platform.
             </p>
           </div>
@@ -167,29 +167,29 @@ export function MyAddress() {
       </div>
 
       {/* Main Content - Address Card Section */}
-      <div className="luxury-container py-12 md:py-20">
+      <div className="luxury-container py-8 md:py-12 lg:py-20 px-4 md:px-6">
         <div className="flex justify-center">
           {/* Card with Image */}
-          <div className="bg-white rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-hidden max-w-2xl w-full relative">
+          <div className="bg-white rounded-lg md:rounded-xl shadow-lg md:shadow-xl hover:shadow-xl md:hover:shadow-2xl transition-shadow duration-300 overflow-hidden max-w-2xl w-full relative">
             <div className="relative">
               <img 
                 src={cardImage}
                 alt="Address Card"
-                className="w-full h-96 object-cover"
+                className="w-full h-60 md:h-80 lg:h-96 object-cover"
               />
               {/* Circle with Plus Sign */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-auto cursor-pointer" onClick={handleAddAddress}>
                 <div className="relative flex items-center justify-center">
-                  <div className="w-64 h-64 rounded-full border-4 border-black flex items-center justify-center hover:bg-black/10 transition-colors">
-                    <svg className="w-40 h-40" viewBox="0 0 100 100" fill="none">
+                  <div className="w-40 md:w-56 lg:w-64 h-40 md:h-56 lg:h-64 rounded-full border-3 md:border-4 border-black flex items-center justify-center hover:bg-black/10 transition-colors">
+                    <svg className="w-24 md:w-32 lg:w-40 h-24 md:h-32 lg:h-40" viewBox="0 0 100 100" fill="none">
                       <path d="M 50 20 L 50 80 M 20 50 L 80 50" stroke="black" strokeWidth="12" strokeLinecap="round"/>
                     </svg>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="p-6">
-              <p className="text-2xl md:text-3xl text-gray-900 text-center font-bold pulse-animation">Add your address</p>
+            <div className="p-4 md:p-6">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-900 text-center font-bold pulse-animation">Add your address</p>
             </div>
           </div>
         </div>
@@ -199,33 +199,33 @@ export function MyAddress() {
       {showModal && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-end justify-center overflow-hidden">
           <div className="bg-white rounded-t-lg w-full max-w-4xl max-h-[85vh] overflow-y-auto">
-            <div className="p-8">
-              <h2 className="text-4xl font-bold text-gray-900 mb-8">NEW ADDRESS</h2>
+            <div className="p-4 md:p-8">
+              <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-8">NEW ADDRESS</h2>
               
-              <p className="text-red-600 text-sm mb-8">* Mandatory fields</p>
+              <p className="text-red-600 text-xs md:text-sm mb-4 md:mb-8">* Mandatory fields</p>
 
-              <form className="space-y-6">
+              <form className="space-y-4 md:space-y-6">
                 {/* Name Fields */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">First name*</label>
+                    <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">First name*</label>
                     <input
                       type="text"
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-black"
+                      className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded text-sm md:text-base focus:outline-none focus:border-black"
                       placeholder="First name"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">Last name*</label>
+                    <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">Last name*</label>
                     <input
                       type="text"
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-black"
+                      className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded text-sm md:text-base focus:outline-none focus:border-black"
                       placeholder="Last name"
                     />
                   </div>
@@ -233,21 +233,21 @@ export function MyAddress() {
 
                 {/* Company */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-2">Company</label>
+                  <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">Company</label>
                   <input
                     type="text"
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-black"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded text-sm md:text-base focus:outline-none focus:border-black"
                     placeholder="Company"
                   />
                 </div>
 
                 {/* Phone Number */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-2">Phone Number*</label>
-                  <div className="flex gap-2">
+                  <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">Phone Number*</label>
+                  <div className="flex gap-2 flex-col md:flex-row">
                     <div className="w-32">
                       <CustomSelect
                         options={countries.map((country, index) => ({
@@ -272,16 +272,16 @@ export function MyAddress() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="flex-1 px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-black"
+                      className="flex-1 px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded text-sm md:text-base focus:outline-none focus:border-black"
                       placeholder="Phone number"
                     />
                   </div>
                 </div>
 
                 {/* Country and Address Line 1 */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">Country*</label>
+                    <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">Country*</label>
                     <CustomSelect
                       options={[
                         { value: '', label: '-- Please choose a country --' },
@@ -301,13 +301,13 @@ export function MyAddress() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">Address Line 1*</label>
+                    <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">Address Line 1*</label>
                     <input
                       type="text"
                       name="addressLine1"
                       value={formData.addressLine1}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-black"
+                      className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded text-sm md:text-base focus:outline-none focus:border-black"
                       placeholder="Address Line 1"
                     />
                   </div>
@@ -315,56 +315,56 @@ export function MyAddress() {
 
                 {/* Address Line 2 */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-2">Address Line 2 (Optional)</label>
+                  <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">Address Line 2 (Optional)</label>
                   <input
                     type="text"
                     name="addressLine2"
                     value={formData.addressLine2}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-black"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded text-sm md:text-base focus:outline-none focus:border-black"
                     placeholder="Address Line 2 (Optional)"
                   />
                 </div>
 
                 {/* Postcode and City */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">Postcode*</label>
+                    <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">Postcode*</label>
                     <input
                       type="text"
                       name="postcode"
                       value={formData.postcode}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-black"
+                      className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded text-sm md:text-base focus:outline-none focus:border-black"
                       placeholder="Postcode"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-900 mb-2">City*</label>
+                    <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">City*</label>
                     <input
                       type="text"
                       name="city"
                       value={formData.city}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-black"
+                      className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded text-sm md:text-base focus:outline-none focus:border-black"
                       placeholder="City"
                     />
                   </div>
                 </div>
 
                 {/* Buttons */}
-                <div className="flex gap-4 justify-center pt-8">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-6 md:pt-8">
                   <button
                     type="button"
                     onClick={handleCloseModal}
-                    className="px-12 py-3 border-2 border-black text-black font-semibold rounded-full hover:bg-black/10 transition"
+                    className="px-8 md:px-12 py-2 md:py-3 border-2 border-black text-black text-sm md:text-base font-semibold rounded-full hover:bg-black/10 transition order-2 sm:order-1"
                   >
                     Cancel
                   </button>
                   <button
                     type="button"
                     onClick={handleValidate}
-                    className="px-12 py-3 bg-black text-white font-semibold rounded-full hover:bg-gray-800 transition"
+                    className="px-8 md:px-12 py-2 md:py-3 bg-black text-white text-sm md:text-base font-semibold rounded-full hover:bg-gray-800 transition order-1 sm:order-2"
                   >
                     Validate
                   </button>
