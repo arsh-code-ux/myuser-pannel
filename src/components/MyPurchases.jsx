@@ -186,33 +186,44 @@ export function MyPurchases() {
 
       {/* Main Content Container */}
       <div className="relative z-10 w-full">
-        {/* Header */}
+        {/* Header - Full Screen Background */}
         <div 
-          className="pt-20 pb-12 text-center px-4 relative bg-cover bg-center bg-no-repeat w-full"
+          className="w-full text-center px-4 relative bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url(${arshBg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed',
-            minHeight: '400px',
+            minHeight: '100vh',
+            height: '100vh',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center'
           }}
         >
-          {/* No dark overlay - showing image clearly */}
-          
-          <div className="inline-block mb-4 relative z-10">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <ShoppingBag className="w-8 h-8 text-yellow-400 animate-bounce" />
-              <h1 className="text-7xl md:text-8xl font-black text-black drop-shadow-2xl tracking-tighter" style={{ fontWeight: 900 }}>
+          {/* Content */}
+          <div className="inline-block mb-6 relative z-10">
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <ShoppingBag className="w-10 md:w-14 lg:w-16 h-10 md:h-14 lg:h-16 text-yellow-400 animate-bounce" />
+              <h1 
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-black tracking-tighter"
+                style={{ 
+                  fontWeight: 900,
+                  textShadow: '0 6px 12px rgba(255, 255, 255, 0.8), 0 3px 6px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(255, 255, 255, 0.4)'
+                }}
+              >
                 MY<span className="text-black"> PURCHASES</span>
               </h1>
-              <ShoppingBag className="w-8 h-8 text-yellow-400 animate-bounce" style={{ animationDelay: '0.5s' }} />
+              <ShoppingBag className="w-10 md:w-14 lg:w-16 h-10 md:h-14 lg:h-16 text-yellow-400 animate-bounce" style={{ animationDelay: '0.5s' }} />
             </div>
           </div>
-          <p className="text-black text-xl font-bold max-w-2xl mx-auto relative z-10 drop-shadow-lg">
+          <p 
+            className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-black max-w-3xl mx-auto relative z-10"
+            style={{
+              textShadow: '0 4px 8px rgba(255, 255, 255, 0.7), 0 2px 4px rgba(255, 255, 255, 0.5)'
+            }}
+          >
             Your carefully curated collection of premium digital artwork. Explore and celebrate your favorite pieces from renowned artists around the world.
           </p>
         </div>

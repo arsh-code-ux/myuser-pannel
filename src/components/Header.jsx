@@ -4,6 +4,7 @@ import { Menu, X, Heart, ShoppingCart, User, LogOut } from 'lucide-react';
 export function Header({ onNavigate }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAccountDropdownOpen, setIsAccountDropdownOpen] = useState(false);
+  const [isMobileAccountOpen, setIsMobileAccountOpen] = useState(false);
 
   const handleMyInformation = () => {
     onNavigate('my-information');
@@ -62,43 +63,43 @@ export function Header({ onNavigate }) {
             </button>
 
             {/* Navigation Links */}
-            <div className="hidden lg:flex items-center gap-6 relative">
+            <div className="hidden md:flex items-center gap-6 relative">
               <div 
                 className="relative"
                 onMouseEnter={() => setIsAccountDropdownOpen(true)}
                 onMouseLeave={() => setIsAccountDropdownOpen(false)}
               >
-                <button className="flex items-center gap-2 text-sm font-medium hover:text-gray-600 transition duration-300">
-                  <User className="w-4 h-4" />
+                <button className="flex items-center gap-2 text-xs md:text-sm lg:text-sm font-medium hover:text-gray-600 transition duration-300 whitespace-nowrap">
+                  <User className="w-3 md:w-4 h-3 md:h-4" />
                   Sign in
                 </button>
 
                 {/* Dropdown Menu */}
                 {isAccountDropdownOpen && (
-                  <div className="absolute top-full right-0 mt-0 w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-50 py-1">
-                    <button onClick={handleMyInformation} className="w-full px-4 py-3 text-left text-sm font-medium text-gray-900 hover:bg-gray-50 transition flex items-center gap-2">
-                      <User className="w-4 h-4" />
+                  <div className="absolute top-full right-0 mt-0 w-48 md:w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-50 py-1">
+                    <button onClick={handleMyInformation} className="w-full px-3 md:px-4 py-2 md:py-3 text-left text-xs md:text-sm font-medium text-gray-900 hover:bg-gray-50 transition flex items-center gap-2">
+                      <User className="w-3 md:w-4 h-3 md:h-4" />
                       My Information
                     </button>
-                    <button onClick={handleMyAddress} className="w-full px-4 py-3 text-left text-sm font-medium text-gray-900 hover:bg-gray-50 transition flex items-center gap-2">
-                      <User className="w-4 h-4" />
+                    <button onClick={handleMyAddress} className="w-full px-3 md:px-4 py-2 md:py-3 text-left text-xs md:text-sm font-medium text-gray-900 hover:bg-gray-50 transition flex items-center gap-2">
+                      <User className="w-3 md:w-4 h-3 md:h-4" />
                       My Address
                     </button>
-                    <button onClick={handleMyPurchases} className="w-full px-4 py-3 text-left text-sm font-medium text-gray-900 hover:bg-gray-50 transition flex items-center gap-2">
-                      <ShoppingCart className="w-4 h-4" />
+                    <button onClick={handleMyPurchases} className="w-full px-3 md:px-4 py-2 md:py-3 text-left text-xs md:text-sm font-medium text-gray-900 hover:bg-gray-50 transition flex items-center gap-2">
+                      <ShoppingCart className="w-3 md:w-4 h-3 md:h-4" />
                       My Purchase
                     </button>
-                    <button onClick={handleMyStore} className="w-full px-4 py-3 text-left text-sm font-medium text-gray-900 hover:bg-gray-50 transition flex items-center gap-2">
-                      <User className="w-4 h-4" />
+                    <button onClick={handleMyStore} className="w-full px-3 md:px-4 py-2 md:py-3 text-left text-xs md:text-sm font-medium text-gray-900 hover:bg-gray-50 transition flex items-center gap-2">
+                      <User className="w-3 md:w-4 h-3 md:h-4" />
                       My Store
                     </button>
-                    <button onClick={handleCreativeHub} className="w-full px-4 py-3 text-left text-sm font-medium text-gray-900 hover:bg-gray-50 transition flex items-center gap-2">
-                      <User className="w-4 h-4" />
+                    <button onClick={handleCreativeHub} className="w-full px-3 md:px-4 py-2 md:py-3 text-left text-xs md:text-sm font-medium text-gray-900 hover:bg-gray-50 transition flex items-center gap-2">
+                      <User className="w-3 md:w-4 h-3 md:h-4" />
                       Creative Hub
                     </button>
                     <div className="border-t border-gray-200"></div>
-                    <button className="w-full px-4 py-3 text-left text-sm font-medium text-red-600 hover:bg-gray-50 transition flex items-center gap-2">
-                      <LogOut className="w-4 h-4" />
+                    <button className="w-full px-3 md:px-4 py-2 md:py-3 text-left text-xs md:text-sm font-medium text-red-600 hover:bg-gray-50 transition flex items-center gap-2">
+                      <LogOut className="w-3 md:w-4 h-3 md:h-4" />
                       Logout
                     </button>
                   </div>
@@ -131,10 +132,89 @@ export function Header({ onNavigate }) {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <nav className="lg:hidden mt-3 py-3 border-t border-gray-200 space-y-2">
-            <a href="#" className="block text-xs sm:text-sm font-medium hover:text-gray-600">Home</a>
-            <a href="#" className="block text-xs sm:text-sm font-medium hover:text-gray-600">Collections</a>
-            <a href="#" className="block text-sm font-medium hover:text-gray-600">About</a>
-            <a href="#" className="block text-sm font-medium hover:text-gray-600">Sign in</a>
+            <a href="#" className="block text-xs sm:text-sm font-medium hover:text-gray-600 py-2">Home</a>
+            <a href="#" className="block text-xs sm:text-sm font-medium hover:text-gray-600 py-2">Collections</a>
+            <a href="#" className="block text-xs sm:text-sm font-medium hover:text-gray-600 py-2">About</a>
+            
+            {/* Mobile Account Menu */}
+            <div className="border-t border-gray-200 pt-2">
+              <button 
+                onClick={() => setIsMobileAccountOpen(!isMobileAccountOpen)}
+                className="w-full flex items-center justify-between text-xs sm:text-sm font-medium hover:text-gray-600 py-2"
+              >
+                <span className="flex items-center gap-2">
+                  <User className="w-3 sm:w-4 h-3 sm:h-4" />
+                  Sign in
+                </span>
+                <span className="text-xs">{isMobileAccountOpen ? '▼' : '▶'}</span>
+              </button>
+
+              {/* Mobile Account Dropdown */}
+              {isMobileAccountOpen && (
+                <div className="ml-4 space-y-1 mt-2 border-l border-gray-300 pl-3">
+                  <button 
+                    onClick={() => {
+                      handleMyInformation();
+                      setIsMenuOpen(false);
+                      setIsMobileAccountOpen(false);
+                    }}
+                    className="w-full text-left text-xs sm:text-sm font-medium text-gray-900 hover:text-gray-600 py-2 flex items-center gap-2"
+                  >
+                    <User className="w-3 sm:w-4 h-3 sm:h-4" />
+                    My Information
+                  </button>
+                  <button 
+                    onClick={() => {
+                      handleMyAddress();
+                      setIsMenuOpen(false);
+                      setIsMobileAccountOpen(false);
+                    }}
+                    className="w-full text-left text-xs sm:text-sm font-medium text-gray-900 hover:text-gray-600 py-2 flex items-center gap-2"
+                  >
+                    <User className="w-3 sm:w-4 h-3 sm:h-4" />
+                    My Address
+                  </button>
+                  <button 
+                    onClick={() => {
+                      handleMyPurchases();
+                      setIsMenuOpen(false);
+                      setIsMobileAccountOpen(false);
+                    }}
+                    className="w-full text-left text-xs sm:text-sm font-medium text-gray-900 hover:text-gray-600 py-2 flex items-center gap-2"
+                  >
+                    <ShoppingCart className="w-3 sm:w-4 h-3 sm:h-4" />
+                    My Purchase
+                  </button>
+                  <button 
+                    onClick={() => {
+                      handleMyStore();
+                      setIsMenuOpen(false);
+                      setIsMobileAccountOpen(false);
+                    }}
+                    className="w-full text-left text-xs sm:text-sm font-medium text-gray-900 hover:text-gray-600 py-2 flex items-center gap-2"
+                  >
+                    <User className="w-3 sm:w-4 h-3 sm:h-4" />
+                    My Store
+                  </button>
+                  <button 
+                    onClick={() => {
+                      handleCreativeHub();
+                      setIsMenuOpen(false);
+                      setIsMobileAccountOpen(false);
+                    }}
+                    className="w-full text-left text-xs sm:text-sm font-medium text-gray-900 hover:text-gray-600 py-2 flex items-center gap-2"
+                  >
+                    <User className="w-3 sm:w-4 h-3 sm:h-4" />
+                    Creative Hub
+                  </button>
+                  <div className="border-t border-gray-300 my-2"></div>
+                  <button className="w-full text-left text-xs sm:text-sm font-medium text-red-600 hover:text-red-700 py-2 flex items-center gap-2">
+                    <LogOut className="w-3 sm:w-4 h-3 sm:h-4" />
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
           </nav>
         )}
       </div>
