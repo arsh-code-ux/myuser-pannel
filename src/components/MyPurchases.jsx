@@ -20,7 +20,7 @@ import booBg from '../boo.jpg';
 import lastBg from '../last.jpg';
 import arshBg from '../arsh.jpg';
 
-export function MyPurchases() {
+export function MyPurchases({ onNavigate }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [showCollections, setShowCollections] = useState(false);
@@ -331,7 +331,10 @@ export function MyPurchases() {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+              <button 
+                onClick={() => onNavigate && onNavigate('all-artworks')}
+                className="bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-12 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
                 Browse artworks
               </button>
               <button 

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Heart } from 'lucide-react';
 import image13 from '../image13.jpg';
 import image10 from '../image10.jpg';
 import image9 from '../image9.jpg';
 import image7 from '../image7.jpg';
 import image6 from '../image6.jpg';
+import { ArtifactsGallery } from './ArtifactsGallery';
 
 export function BestsellerProducts() {
+  const [showAllArtifacts, setShowAllArtifacts] = useState(false);
   const products = [
     {
       id: 1,
@@ -110,9 +112,16 @@ export function BestsellerProducts() {
         </div>
 
         <div className="text-center">
-          <button className="luxury-button">All artifacts →</button>
+          <button 
+            onClick={() => setShowAllArtifacts(true)}
+            className="luxury-button">All artifacts →</button>
         </div>
       </div>
+
+      <ArtifactsGallery 
+        isOpen={showAllArtifacts} 
+        onClose={() => setShowAllArtifacts(false)} 
+      />
     </section>
   );
 }

@@ -11,16 +11,13 @@ export function ConversationsSection() {
   return (
     <section className="py-16 md:py-24">
       <div className="luxury-container">
-        <div className="flex justify-between items-center mb-12">
-          <div>
-            <p className="section-subtitle">Insights & Knowledge</p>
-            <h2 className="section-title">Conversations with Experts</h2>
-          </div>
-          <a href="#" className="luxury-button hidden md:inline-block">Read more →</a>
+        <div className="mb-12">
+          <p className="section-subtitle">Insights & Knowledge</p>
+          <h2 className="section-title">Conversations with Experts</h2>
         </div>
 
         {/* Conversations Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {conversations.map((conversation) => (
             <div
               key={conversation.id}
@@ -32,10 +29,6 @@ export function ConversationsSection() {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="text-center md:hidden">
-          <a href="#" className="luxury-button">Read more →</a>
         </div>
       </div>
     </section>

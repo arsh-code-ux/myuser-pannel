@@ -4,43 +4,43 @@ export function Footer() {
   return (
     <footer className="bg-black text-white">
       {/* CTA Section */}
-      <div className="border-b border-gray-900 py-16 text-center">
-        <h2 className="text-3xl md:text-4xl font-serif font-bold mb-3">
+      <div className="border-b border-gray-900 py-6 text-center">
+        <h2 className="text-lg md:text-xl font-serif font-bold mb-1">
           Discover Timeless Heritage
         </h2>
-        <p className="text-gray-400 text-base">
+        <p className="text-gray-400 text-xs md:text-sm">
           Try any artifact from our collection for 14 days at no cost. Money-back guarantee.
         </p>
       </div>
 
       {/* Benefits */}
-      <div className="border-b border-gray-900 py-12">
+      <div className="border-b border-gray-900 py-6">
         <div className="luxury-container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="text-center md:text-left">
-              <p className="text-sm font-bold mb-3 uppercase tracking-wide">Premium Curation</p>
-              <p className="text-gray-400 text-sm">Our experts carefully select the finest pieces from around the world</p>
+              <p className="text-xs font-bold mb-2 uppercase tracking-wide">Premium Curation</p>
+              <p className="text-gray-400 text-xs">Our experts carefully select the finest pieces from around the world</p>
             </div>
             <div className="text-center md:text-left">
-              <p className="text-sm font-bold mb-3 uppercase tracking-wide">Secure Transactions</p>
-              <p className="text-gray-400 text-sm">Protected payments via credit card, PayPal, and bank transfer</p>
+              <p className="text-xs font-bold mb-2 uppercase tracking-wide">Secure Transactions</p>
+              <p className="text-gray-400 text-xs">Protected payments via credit card, PayPal, and bank transfer</p>
             </div>
             <div className="text-center md:text-left">
-              <p className="text-sm font-bold mb-3 uppercase tracking-wide">Worldwide Delivery</p>
-              <p className="text-gray-400 text-sm">Shipped securely and insured to your location worldwide</p>
+              <p className="text-xs font-bold mb-2 uppercase tracking-wide">Worldwide Delivery</p>
+              <p className="text-gray-400 text-xs">Shipped securely and insured to your location worldwide</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Main Footer */}
-      <div className="py-16">
+      <div className="py-8">
         <div className="luxury-container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             {/* About */}
             <div>
-              <h3 className="font-bold text-sm mb-6 uppercase tracking-widest">About Zigguratss</h3>
-              <ul className="space-y-2 text-xs text-gray-400">
+              <h3 className="font-bold text-xs mb-3 uppercase tracking-widest">About Zigguratss</h3>
+              <ul className="space-y-1 text-xs text-gray-400">
                 <li><a href="#" className="hover:text-white transition duration-300">About Us</a></li>
                 <li><a href="#" className="hover:text-white transition duration-300">Collectors Guide</a></li>
                 <li><a href="#" className="hover:text-white transition duration-300">FAQs</a></li>
@@ -51,8 +51,8 @@ export function Footer() {
 
             {/* Services */}
             <div>
-              <h3 className="font-bold text-sm mb-6 uppercase tracking-widest">Our Services</h3>
-              <ul className="space-y-2 text-xs text-gray-400">
+              <h3 className="font-bold text-xs mb-3 uppercase tracking-widest">Our Services</h3>
+              <ul className="space-y-1 text-xs text-gray-400">
                 <li><a href="#" className="hover:text-white transition duration-300">Heritage Advisory</a></li>
                 <li><a href="#" className="hover:text-white transition duration-300">Preservation Services</a></li>
                 <li><a href="#" className="hover:text-white transition duration-300">Authentication</a></li>
@@ -63,8 +63,8 @@ export function Footer() {
 
             {/* Collections */}
             <div>
-              <h3 className="font-bold text-sm mb-6 uppercase tracking-widest">Collections</h3>
-              <ul className="space-y-2 text-xs text-gray-400">
+              <h3 className="font-bold text-xs mb-3 uppercase tracking-widest">Collections</h3>
+              <ul className="space-y-1 text-xs text-gray-400">
                 <li><a href="#" className="hover:text-white transition duration-300">Ancient Artifacts</a></li>
                 <li><a href="#" className="hover:text-white transition duration-300">Sculptures</a></li>
                 <li><a href="#" className="hover:text-white transition duration-300">Paintings</a></li>
@@ -75,8 +75,8 @@ export function Footer() {
 
             {/* Resources */}
             <div>
-              <h3 className="font-bold text-sm mb-6 uppercase tracking-widest">Resources</h3>
-              <ul className="space-y-2 text-xs text-gray-400">
+              <h3 className="font-bold text-xs mb-3 uppercase tracking-widest">Resources</h3>
+              <ul className="space-y-1 text-xs text-gray-400">
                 <li><a href="#" className="hover:text-white transition duration-300">Blog</a></li>
                 <li><a href="#" className="hover:text-white transition duration-300">Documentation</a></li>
                 <li><a href="#" className="hover:text-white transition duration-300">Newsletter</a></li>
@@ -87,23 +87,23 @@ export function Footer() {
           </div>
 
           {/* Divider */}
-          <div className="border-t border-gray-900 pt-12 mb-8"></div>
+          <div className="border-t border-gray-900 py-4"></div>
 
           {/* Bottom Footer */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-center md:text-left">
             <div>
-              <div className="text-3xl font-serif font-bold mb-2">Zigguratss</div>
+              <div className="text-lg font-serif font-bold mb-1">Zigguratss</div>
               <p className="text-xs text-gray-500">Preserving Heritage, Inspiring Collectors</p>
             </div>
 
-            <div className="flex gap-6">
-              <a href="#" className="text-gray-400 hover:text-white transition text-sm font-medium">Facebook</a>
-              <a href="#" className="text-gray-400 hover:text-white transition text-sm font-medium">Instagram</a>
-              <a href="#" className="text-gray-400 hover:text-white transition text-sm font-medium">Twitter</a>
-              <a href="#" className="text-gray-400 hover:text-white transition text-sm font-medium">LinkedIn</a>
+            <div className="flex gap-4 justify-center md:justify-start">
+              <a href="#" className="text-gray-400 hover:text-white transition text-xs font-medium">Facebook</a>
+              <a href="#" className="text-gray-400 hover:text-white transition text-xs font-medium">Instagram</a>
+              <a href="#" className="text-gray-400 hover:text-white transition text-xs font-medium">Twitter</a>
+              <a href="#" className="text-gray-400 hover:text-white transition text-xs font-medium">LinkedIn</a>
             </div>
 
-            <div className="flex gap-6 flex-col md:flex-row text-xs text-gray-500">
+            <div className="flex gap-4 flex-col md:flex-row text-xs text-gray-500">
               <p>© 2026 Zigguratss. All rights reserved.</p>
               <a href="#" className="hover:text-white transition">Privacy Policy</a>
               <a href="#" className="hover:text-white transition">Terms of Service</a>
@@ -113,8 +113,8 @@ export function Footer() {
       </div>
 
       {/* Back to Top */}
-      <div className="border-t border-gray-900 py-8 text-center">
-        <button className="text-gray-400 hover:text-white transition font-bold text-lg">↑</button>
+      <div className="border-t border-gray-900 py-3 text-center">
+        <button className="text-gray-400 hover:text-white transition font-bold text-base">↑</button>
       </div>
     </footer>
   );

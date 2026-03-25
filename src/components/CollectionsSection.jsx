@@ -42,10 +42,6 @@ export function CollectionsSection() {
             </div>
           ))}
         </div>
-
-        <div className="text-center mt-12">
-          <a href="#" className="luxury-button">Explore all collections →</a>
-        </div>
       </div>
     </section>
   );

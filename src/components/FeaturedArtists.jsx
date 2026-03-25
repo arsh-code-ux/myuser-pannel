@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import prasoonChandraPoddar from '../Prasoon Chandra Poddar.jpg';
 import richardAnbudurai from '../Richard Anbudurai.jpeg';
 import drRamBaliPrajapati from '../Dr Ram Bali Prajapati.jpg';
@@ -6,7 +6,8 @@ import bhawanaRajput from '../BHAWANA RAJPUT.jpg';
 import navjotSohal from '../navjot sohal.jpeg';
 import yashasviHanda from '../Yashasvi Handa.jpeg';
 
-export function FeaturedArtists() {
+export function FeaturedArtists({ onNavigate }) {
+  const [showAllExperts, setShowAllExperts] = useState(false);
   const artists = [
     { 
       id: 1, 
@@ -118,7 +119,9 @@ export function FeaturedArtists() {
         </div>
 
         <div className="text-center">
-          <button className="luxury-button">All experts →</button>
+          <button 
+            onClick={() => onNavigate('all-experts')}
+            className="luxury-button">All experts →</button>
         </div>
       </div>
     </section>

@@ -129,9 +129,6 @@ export function ArtworkGallery() {
           ))}
         </div>
 
-        <div className="text-center">
-          <button className="luxury-button">View All Artworks →</button>
-        </div>
       </div>
     </section>
   );
