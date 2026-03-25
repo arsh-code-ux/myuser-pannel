@@ -65,10 +65,10 @@ export function ArtworkGallery() {
 
   if (loading) {
     return (
-      <section className="py-20 md:py-32 bg-gray-50">
-        <div className="luxury-container">
+      <section className="py-8 md:py-16 lg:py-32 bg-gray-50">
+        <div className="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
           <div className="text-center">
-            <p className="text-lg text-gray-600">Loading artworks...</p>
+            <p className="text-sm md:text-base text-gray-600">Loading artworks...</p>
           </div>
         </div>
       </section>
@@ -76,16 +76,16 @@ export function ArtworkGallery() {
   }
 
   return (
-    <section className="py-20 md:py-32 bg-gray-50">
-      <div className="luxury-container">
-        <div className="mb-16">
-          <p className="section-subtitle">Explore Collection</p>
-          <h2 className="section-title">All Artworks</h2>
-          <p className="text-gray-700 text-base">Discover our curated collection of unique artworks from talented artists</p>
+    <section className="py-8 md:py-16 lg:py-32 bg-gray-50">
+      <div className="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
+        <div className="mb-8 md:mb-12 lg:mb-16">
+          <p className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mb-2 md:mb-3">Explore Collection</p>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black mb-3 md:mb-4">All Artworks</h2>
+          <p className="text-xs md:text-sm lg:text-base text-gray-700">Discover our curated collection of unique artworks from talented artists</p>
         </div>
 
         {/* Artworks Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 mb-8 md:mb-12">
           {artworks.map((artwork) => (
             <div key={artwork.id} className="group cursor-pointer">
               {/* Artwork Image */}
@@ -100,27 +100,27 @@ export function ArtworkGallery() {
                 />
                 
                 {/* Wishlist Icon */}
-                <button className="absolute top-3 right-3 bg-yellow-400 rounded-full p-2 shadow-md hover:bg-yellow-500 transition opacity-0 group-hover:opacity-100 duration-300">
-                  <Heart className="w-4 h-4 text-black" fill="currentColor" />
+                <button className="absolute top-2 md:top-3 right-2 md:right-3 bg-yellow-400 rounded-full p-1.5 md:p-2 shadow-md hover:bg-yellow-500 transition opacity-0 group-hover:opacity-100 duration-300">
+                  <Heart className="w-3 md:w-4 h-3 md:h-4 text-black" fill="currentColor" />
                 </button>
 
                 {/* Add to Cart Icon */}
-                <button className="absolute bottom-3 right-3 bg-black text-white rounded-full p-2 shadow-md hover:bg-gray-800 transition opacity-0 group-hover:opacity-100 duration-300">
-                  <ShoppingCart className="w-4 h-4" />
+                <button className="absolute bottom-2 md:bottom-3 right-2 md:right-3 bg-black text-white rounded-full p-1.5 md:p-2 shadow-md hover:bg-gray-800 transition opacity-0 group-hover:opacity-100 duration-300">
+                  <ShoppingCart className="w-3 md:w-4 h-3 md:h-4" />
                 </button>
               </div>
 
               {/* Artwork Info */}
-              <div className="mt-4">
-                <h3 className="font-semibold text-sm text-black group-hover:text-gray-700 transition line-clamp-2">
+              <div className="mt-2 md:mt-3 lg:mt-4">
+                <h3 className="font-semibold text-xs md:text-sm text-black group-hover:text-gray-700 transition line-clamp-2">
                   {artwork.title}
                 </h3>
-                <p className="text-xs text-gray-600 mb-1">{artwork.artist}</p>
-                <p className="text-xs text-gray-500 mb-3 uppercase tracking-wide">{artwork.category}</p>
+                <p className="text-xs text-gray-600 mb-0.5 md:mb-1 line-clamp-1">{artwork.artist}</p>
+                <p className="text-xs text-gray-500 mb-2 md:mb-3 uppercase tracking-wide line-clamp-1">{artwork.category}</p>
 
                 {/* Price */}
                 <div className="flex items-center gap-2">
-                  <span className="font-bold text-sm text-black">
+                  <span className="font-bold text-xs md:text-sm text-black">
                     {artwork.price}
                   </span>
                 </div>
@@ -129,6 +129,9 @@ export function ArtworkGallery() {
           ))}
         </div>
 
+        <div className="text-center">
+          <button className="px-6 md:px-8 py-2 md:py-2.5 border border-black bg-black text-white font-medium rounded-full hover:bg-white hover:text-black transition text-xs md:text-sm">View All Artworks →</button>
+        </div>
       </div>
     </section>
   );
