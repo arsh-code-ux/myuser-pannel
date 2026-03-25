@@ -1,376 +1,432 @@
 import React, { useState } from 'react';
-import { ChevronRight, Home } from 'lucide-react';
-import addressBg from '../address.jpg';
-import cardImage from '../dfj.jpg';
-import birds from '../birds.jpg';
-import bird1 from '../bird1.jpg';
+import { ChevronRight, Home, X, MapPin } from 'lucide-react';
+import map from '../map.jpg';
+import map1 from '../map1.jpg';
+import map3 from '../3 vali.jpg';
 
-// Add CSS for pulsing animation
+// Add CSS for address page
 const styles = `
-  @keyframes pulse-pop {
-    0%, 100% {
-      transform: scale(1);
+  .address-container {
+    background: linear-gradient(135deg, #fef3c7 0%, #ffffff 50%, #fcd34d 100%);
+    min-h-screen;
+  }
+  
+  .address-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 4px solid #fcd34d;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .address-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 30px 70px rgba(250, 204, 21, 0.4);
+    border-color: #f59e0b;
+  }
+  
+  .address-card-image {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
+  }
+  
+  .address-card-content {
+    padding: 32px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .address-card-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  
+  .address-card-details {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+  
+  .address-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+  }
+  
+  .address-btn {
+    flex: 1;
+    padding: 14px 20px;
+    border: 3px solid #fcd34d;
+    background: white;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .address-btn:hover {
+    background: #fcd34d;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(250, 204, 21, 0.3);
+  }
+  
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
     }
-    50% {
-      transform: scale(1.1);
+    to {
+      opacity: 1;
     }
   }
   
-  .pulse-animation {
-    animation: pulse-pop 2s ease-in-out infinite;
-  }
-`;
-
-// Custom Dropdown Component
-function CustomSelect({ options, value, onChange, placeholder }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const selectedOption = options.find(opt => opt.value === value);
-
-  return (
-    <div className="relative w-full">
-      <button
-        type="button"
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-black bg-white cursor-pointer text-left flex justify-between items-center"
-      >
-        <span>{selectedOption ? selectedOption.label : placeholder}</span>
-        <svg className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} viewBox="0 0 12 12" fill="none">
-          <path d="M6 9L1 4h10z" fill="currentColor"/>
-        </svg>
-      </button>
-
-      {isOpen && (
-        <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-300 rounded shadow-lg max-h-64 overflow-y-auto z-50">
-          {options.map((option) => (
-            <div
-              key={option.value}
-              onClick={() => {
-                onChange(option.value);
-                setIsOpen(false);
-              }}
-              className={`px-4 py-3 cursor-pointer hover:bg-blue-500 hover:text-white ${
-                value === option.value ? 'bg-blue-500 text-white' : ''
-              }`}
-            >
-              {option.label}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-// Add CSS for dropdown to open downwards
-const dropdownStyles = `
-  select.dropdown-down {
-    position: relative;
+  .modal-content {
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+    border: 3px solid #fcd34d;
+    animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   
-  select.dropdown-down::after {
-    content: '';
+  @keyframes slideUp {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    border-bottom: 3px solid #fcd34d;
+    padding-bottom: 16px;
+  }
+  
+  .modal-title {
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .form-label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 3px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background: #f9fafb;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: #fcd34d;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(253, 211, 77, 0.2);
+    transform: scale(1.02);
+  }
+  
+  .form-input select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23fcd34d' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+  }
+  
+  .save-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 25px rgba(250, 204, 21, 0.3);
+    animation: slideUp 0.5s ease-out 0.3s both;
+  }
+  
+  .save-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(250, 204, 21, 0.5);
+  }
+  
+  .save-btn:active {
+    transform: translateY(-2px);
   }
 `;
 
-// Countries data with flags and phone codes
-const countries = [
-  { name: 'United States', code: 'US', flag: '🇺🇸', phoneCode: '+1' },
-  { name: 'United Kingdom', code: 'GB', flag: '🇬🇧', phoneCode: '+44' },
-  { name: 'Canada', code: 'CA', flag: '🇨🇦', phoneCode: '+1' },
-  { name: 'Australia', code: 'AU', flag: '🇦🇺', phoneCode: '+61' },
-  { name: 'Germany', code: 'DE', flag: '🇩🇪', phoneCode: '+49' },
-  { name: 'France', code: 'FR', flag: '🇫🇷', phoneCode: '+33' },
-  { name: 'Italy', code: 'IT', flag: '🇮🇹', phoneCode: '+39' },
-  { name: 'Spain', code: 'ES', flag: '🇪🇸', phoneCode: '+34' },
-  { name: 'Japan', code: 'JP', flag: '🇯🇵', phoneCode: '+81' },
-  { name: 'China', code: 'CN', flag: '🇨🇳', phoneCode: '+86' },
-  { name: 'Brazil', code: 'BR', flag: '🇧🇷', phoneCode: '+55' },
-  { name: 'Mexico', code: 'MX', flag: '🇲🇽', phoneCode: '+52' },
-  { name: 'Singapore', code: 'SG', flag: '🇸🇬', phoneCode: '+65' },
-  { name: 'United Arab Emirates', code: 'AE', flag: '🇦🇪', phoneCode: '+971' },
-  { name: 'Pakistan', code: 'PK', flag: '🇵🇰', phoneCode: '+92' },
-  { name: 'Bangladesh', code: 'BD', flag: '🇧🇩', phoneCode: '+880' },
-  { name: 'Sri Lanka', code: 'LK', flag: '🇱🇰', phoneCode: '+94' },
-  { name: 'Thailand', code: 'TH', flag: '🇹🇭', phoneCode: '+66' },
-  { name: 'Indonesia', code: 'ID', flag: '🇮🇩', phoneCode: '+62' },
+// Artwork data - kept for reference
+const artworksData = [
+  { id: 1, title: 'Abstract Dreams', artist: 'Aria Chen', image: map, category: 'Strategy & Planning' },
+  { id: 2, title: 'Urban Visions', artist: 'Marcus Reid', image: map1, category: 'Design & Development' },
+  { id: 3, title: 'Cosmic Energy', artist: 'Sofia Rossi', image: map, category: 'Launch & Growth' },
 ];
 
 export function MyAddress() {
-  const [addresses, setAddresses] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [addresses, setAddresses] = useState([
+    {
+      id: 1,
+      name: 'Home',
+      location: 'Cecilia Chapman, 711-2880 Nulla St, Manhatan',
+      details: 'Primary residence'
+    },
+    {
+      id: 2,
+      name: 'Office',
+      location: 'Sameer Pally Rd, SA Block, Samplipur, Krishnagur',
+      details: 'Work location'
+    },
+    {
+      id: 3,
+      name: 'Studio',
+      location: 'Art District Lane, Creative Hub, Downtown District',
+      details: 'Creative workspace'
+    }
+  ]);
   const [formData, setFormData] = useState({
-    lastName: '',
-    firstName: '',
-    company: '',
-    phone: '',
-    country: '',
-    selectedCountry: null,
-    addressLine1: '',
-    addressLine2: '',
-    postcode: '',
-    city: ''
+    name: '',
+    location: '',
+    landmark: '',
+    city: '',
+    state: '',
+    pincode: '',
+    details: ''
   });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
   const handleAddAddress = () => {
-    setShowModal(true);
+    if (formData.name && formData.location) {
+      const newAddress = {
+        id: addresses.length + 1,
+        ...formData
+      };
+      setAddresses([...addresses, newAddress]);
+      setFormData({ name: '', location: '', details: '' });
+      setShowModal(false);
+    }
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
-  const handleValidate = () => {
-    // Handle validate logic here
-    console.log('Validating address:', formData);
+  const handleDelete = (id) => {
+    setAddresses(addresses.filter(addr => addr.id !== id));
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="address-container">
       <style>{styles}</style>
+      
       {/* Breadcrumb */}
-      <div className="luxury-container py-6 flex items-center gap-2 text-sm text-gray-600">
+      <div className="px-6 py-6 flex items-center gap-2 text-sm text-gray-600">
         <Home className="w-4 h-4" />
         <span>My Account</span>
         <ChevronRight className="w-4 h-4" />
         <span className="text-gray-900 font-medium">My Address</span>
       </div>
 
-      {/* Hero Header Section with Address Background */}
-      <div className="relative w-full py-12 md:py-24 lg:py-40 overflow-hidden" style={{
-        backgroundImage: `url(${addressBg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        filter: 'none'
-      }}>
-        {/* Content */}
-        <div className="luxury-container relative z-10 text-center px-4 md:px-6">
-          <div className="flex-1">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-serif font-black text-black mb-3 md:mb-4 drop-shadow-lg" style={{ letterSpacing: '-0.02em' }}>
-              MY ADDRESS
+      {/* Header with Add Button */}
+      <div className="px-6 md:px-12 py-8 max-w-7xl mx-auto w-full">
+        <div className="flex items-center justify-between mb-12">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-2" style={{
+              textShadow: '0 8px 16px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(250, 204, 21, 0.3)',
+              letterSpacing: '-1px'
+            }}>
+              My Addresses
             </h1>
-            <div className="w-32 md:w-40 h-1.5 md:h-2 bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-300 mx-auto mb-4 md:mb-8"></div>
-            <p className="text-black text-base sm:text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto leading-relaxed drop-shadow-md font-black px-4">
-              Manage your address details and delivery information. Keep your address updated to ensure smooth transactions on our platform.
-            </p>
+            <p className="text-gray-600 text-lg">Manage your delivery addresses</p>
           </div>
+          <button 
+            onClick={() => setShowModal(true)}
+            className="flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-500 hover:to-amber-500 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg text-2xl"
+          >
+            +
+          </button>
         </div>
-      </div>
 
-      {/* Main Content - Address Card Section */}
-      <div className="luxury-container py-8 md:py-12 lg:py-20 px-4 md:px-6">
-        <div className="flex justify-center">
-          {/* Card with Image */}
-          <div className="bg-white rounded-lg md:rounded-xl shadow-lg md:shadow-xl hover:shadow-xl md:hover:shadow-2xl transition-shadow duration-300 overflow-hidden max-w-2xl w-full relative">
-            <div className="relative">
+        {/* Address Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10">
+          {addresses.map((address, index) => (
+            <div key={address.id} className="address-card">
               <img 
-                src={cardImage}
-                alt="Address Card"
-                className="w-full h-60 md:h-80 lg:h-96 object-cover"
+                src={index === 0 ? map : index === 1 ? map1 : map3} 
+                alt={address.name}
+                className="address-card-image"
               />
-              {/* Circle with Plus Sign */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-auto cursor-pointer" onClick={handleAddAddress}>
-                <div className="relative flex items-center justify-center">
-                  <div className="w-40 md:w-56 lg:w-64 h-40 md:h-56 lg:h-64 rounded-full border-3 md:border-4 border-black flex items-center justify-center hover:bg-black/10 transition-colors">
-                    <svg className="w-24 md:w-32 lg:w-40 h-24 md:h-32 lg:h-40" viewBox="0 0 100 100" fill="none">
-                      <path d="M 50 20 L 50 80 M 20 50 L 80 50" stroke="black" strokeWidth="12" strokeLinecap="round"/>
-                    </svg>
-                  </div>
-                </div>
+              <div className="address-card-content">
+                <h3 className="address-card-title">{address.name}</h3>
+                <p className="address-card-details">
+                  <MapPin className="w-4 h-4 inline mr-2 text-amber-500" />
+                  {address.location}
+                </p>
+                {address.details && (
+                  <p className="address-card-details text-sm">{address.details}</p>
+                )}
               </div>
             </div>
-            <div className="p-4 md:p-6">
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-900 text-center font-bold pulse-animation">Add your address</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* Modal for New Address */}
+      {/* Add Address Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-end justify-center overflow-hidden">
-          <div className="bg-white rounded-t-lg w-full max-w-4xl max-h-[85vh] overflow-y-auto">
-            <div className="p-4 md:p-8">
-              <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-8">NEW ADDRESS</h2>
-              
-              <p className="text-red-600 text-xs md:text-sm mb-4 md:mb-8">* Mandatory fields</p>
-
-              <form className="space-y-4 md:space-y-6">
-                {/* Name Fields */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                  <div>
-                    <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">First name*</label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded text-sm md:text-base focus:outline-none focus:border-black"
-                      placeholder="First name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">Last name*</label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded text-sm md:text-base focus:outline-none focus:border-black"
-                      placeholder="Last name"
-                    />
-                  </div>
-                </div>
-
-                {/* Company */}
-                <div>
-                  <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">Company</label>
-                  <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleInputChange}
-                    className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded text-sm md:text-base focus:outline-none focus:border-black"
-                    placeholder="Company"
-                  />
-                </div>
-
-                {/* Phone Number */}
-                <div>
-                  <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">Phone Number*</label>
-                  <div className="flex gap-2 flex-col md:flex-row">
-                    <div className="w-32">
-                      <CustomSelect
-                        options={countries.map((country, index) => ({
-                          value: index.toString(),
-                          label: `${country.flag} ${country.phoneCode}`
-                        }))}
-                        value={formData.selectedCountry ? countries.findIndex(c => c.code === formData.selectedCountry).toString() : ''}
-                        onChange={(value) => {
-                          const index = parseInt(value);
-                          if (index >= 0) {
-                            setFormData(prev => ({
-                              ...prev,
-                              selectedCountry: countries[index].code
-                            }));
-                          }
-                        }}
-                        placeholder="🇮🇳 +91"
-                      />
-                    </div>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="flex-1 px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded text-sm md:text-base focus:outline-none focus:border-black"
-                      placeholder="Phone number"
-                    />
-                  </div>
-                </div>
-
-                {/* Country and Address Line 1 */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                  <div>
-                    <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">Country*</label>
-                    <CustomSelect
-                      options={[
-                        { value: '', label: '-- Please choose a country --' },
-                        ...countries.map((country) => ({
-                          value: country.code,
-                          label: `${country.flag} ${country.name}`
-                        }))
-                      ]}
-                      value={formData.country}
-                      onChange={(value) => {
-                        setFormData(prev => ({
-                          ...prev,
-                          country: value
-                        }));
-                      }}
-                      placeholder="-- Please choose a country --"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">Address Line 1*</label>
-                    <input
-                      type="text"
-                      name="addressLine1"
-                      value={formData.addressLine1}
-                      onChange={handleInputChange}
-                      className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded text-sm md:text-base focus:outline-none focus:border-black"
-                      placeholder="Address Line 1"
-                    />
-                  </div>
-                </div>
-
-                {/* Address Line 2 */}
-                <div>
-                  <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">Address Line 2 (Optional)</label>
-                  <input
-                    type="text"
-                    name="addressLine2"
-                    value={formData.addressLine2}
-                    onChange={handleInputChange}
-                    className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded text-sm md:text-base focus:outline-none focus:border-black"
-                    placeholder="Address Line 2 (Optional)"
-                  />
-                </div>
-
-                {/* Postcode and City */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                  <div>
-                    <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">Postcode*</label>
-                    <input
-                      type="text"
-                      name="postcode"
-                      value={formData.postcode}
-                      onChange={handleInputChange}
-                      className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded text-sm md:text-base focus:outline-none focus:border-black"
-                      placeholder="Postcode"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs md:text-sm font-medium text-gray-900 mb-2">City*</label>
-                    <input
-                      type="text"
-                      name="city"
-                      value={formData.city}
-                      onChange={handleInputChange}
-                      className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded text-sm md:text-base focus:outline-none focus:border-black"
-                      placeholder="City"
-                    />
-                  </div>
-                </div>
-
-                {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-6 md:pt-8">
-                  <button
-                    type="button"
-                    onClick={handleCloseModal}
-                    className="px-8 md:px-12 py-2 md:py-3 border-2 border-black text-black text-sm md:text-base font-semibold rounded-full hover:bg-black/10 transition order-2 sm:order-1"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleValidate}
-                    className="px-8 md:px-12 py-2 md:py-3 bg-black text-white text-sm md:text-base font-semibold rounded-full hover:bg-gray-800 transition order-1 sm:order-2"
-                  >
-                    Validate
-                  </button>
-                </div>
-              </form>
+        <div className="modal-backdrop">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h2 className="modal-title">Add New Address</h2>
+              <button 
+                onClick={() => setShowModal(false)}
+                className="text-gray-400 hover:text-gray-600 text-2xl"
+              >
+                <X className="w-6 h-6" />
+              </button>
             </div>
+
+            <div className="form-group">
+              <label className="form-label">Full Address</label>
+              <input 
+                type="text" 
+                className="form-input"
+                placeholder="Enter your full address"
+                value={formData.location}
+                onChange={(e) => setFormData({...formData, location: e.target.value})}
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Landmark (Optional)</label>
+              <input 
+                type="text" 
+                className="form-input"
+                placeholder="Nearby landmark"
+                value={formData.landmark}
+                onChange={(e) => setFormData({...formData, landmark: e.target.value})}
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">City</label>
+              <input 
+                type="text" 
+                className="form-input"
+                placeholder="Enter city"
+                value={formData.city}
+                onChange={(e) => setFormData({...formData, city: e.target.value})}
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">State</label>
+              <input 
+                type="text" 
+                className="form-input"
+                placeholder="Enter state"
+                value={formData.state}
+                onChange={(e) => setFormData({...formData, state: e.target.value})}
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Pincode</label>
+              <input 
+                type="text" 
+                className="form-input"
+                placeholder="Enter pincode"
+                value={formData.pincode}
+                onChange={(e) => setFormData({...formData, pincode: e.target.value})}
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Address Type</label>
+              <select 
+                className="form-input"
+                value={formData.name}
+                onChange={(e) => setFormData({...formData, name: e.target.value})}
+              >
+                <option value="">Select address type</option>
+                <option value="Home">Home</option>
+                <option value="Office">Office</option>
+                <option value="Studio">Studio</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <button 
+              onClick={handleAddAddress}
+              className="save-btn"
+            >
+              Save Address
+            </button>
           </div>
         </div>
       )}

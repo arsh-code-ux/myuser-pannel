@@ -413,11 +413,11 @@ export function MyInformation() {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-black text-white rounded-lg p-12 text-center">
+        <div className="bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 text-black rounded-lg p-12 text-center">
           <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
             TRY THE ARTWORK OUT AT HOME FOR FREE FOR 14 DAYS
           </h2>
-          <p className="text-lg text-gray-200">
+          <p className="text-lg text-gray-800">
             If you change your mind, you can send it back free of charge, and we'll reimburse you.
           </p>
         </div>

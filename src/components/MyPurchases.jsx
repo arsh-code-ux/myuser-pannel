@@ -19,6 +19,7 @@ import image7 from '../image7.jpg';
 import booBg from '../boo.jpg';
 import lastBg from '../last.jpg';
 import arshBg from '../arsh.jpg';
+import newsBg from '../ths.jpg';
 
 export function MyPurchases() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -190,10 +191,10 @@ export function MyPurchases() {
         <div 
           className="w-full text-center px-4 relative bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url(${arshBg})`,
+            backgroundImage: `url(${newsBg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundAttachment: 'fixed',
+            backgroundAttachment: 'scroll',
             minHeight: '100vh',
             height: '100vh',
             display: 'flex',
@@ -224,17 +225,16 @@ export function MyPurchases() {
               textShadow: '0 4px 8px rgba(255, 255, 255, 0.7), 0 2px 4px rgba(255, 255, 255, 0.5)'
             }}
           >
-            Your carefully curated collection of premium digital artwork. Explore and celebrate your favorite pieces from renowned artists around the world.
+            Discover a world of extraordinary creativity. Your personal gallery of curated masterpieces from visionary artists. Every collection tells a story, every artwork sparks inspiration.
           </p>
         </div>
 
         {/* Infinite Carousel - Three Boxes Shuffle Positions */}
         <div 
-          className="relative w-full h-screen flex items-center justify-center overflow-visible px-4 bg-white bg-cover bg-center bg-no-repeat"
+          className="relative w-full h-screen flex items-center justify-center overflow-visible px-4 bg-white"
           style={{
-            backgroundImage: `url(${lastBg})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
+            backgroundColor: '#ffffff',
+            backgroundImage: 'none'
           }}
         >
           <div className="relative w-full max-w-7xl mx-auto h-full flex items-center justify-center">
@@ -315,16 +315,16 @@ export function MyPurchases() {
 
         {/* Artwork Details Panel */}
         <div 
-          className="w-full bg-yellow-50 py-20 px-4 border-t-4 border-gray-200 bg-cover bg-center bg-no-repeat relative"
+          className="w-full bg-gradient-to-r from-yellow-500 via-yellow-400 to-amber-400 py-20 px-4 border-t-4 border-gray-200 bg-cover bg-center bg-no-repeat relative"
           style={{
             backgroundImage: `url(${lastBg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundColor: '#fef3c7'
+            backgroundColor: '#fcd34d'
           }}
         >
           {/* Light overlay for better text readability */}
-          <div className="absolute inset-0 bg-yellow-50/90"></div>
+          <div className="absolute inset-0 bg-yellow-300/75"></div>
           
           <div className="relative z-10 flex flex-col items-center justify-center space-y-8">
             {/* Package Icon */}
@@ -333,12 +333,19 @@ export function MyPurchases() {
             </div>
             
             <div className="text-center">
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-2">
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-2" style={{
+                textShadow: '0 10px 20px rgba(0, 0, 0, 0.5), 0 5px 10px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2)'
+              }}>
                 YOU HAVE NOT PLACED
               </h2>
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-8">
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-8" style={{
+                textShadow: '0 10px 20px rgba(0, 0, 0, 0.5), 0 5px 10px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2)'
+              }}>
                 AN ORDER YET
               </h2>
+              <p className="text-lg md:text-xl text-slate-800 mb-8 max-w-2xl mx-auto font-semibold">
+                Start your artistic journey by exploring our exclusive collection of premium digital artworks from talented artists worldwide.
+              </p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
