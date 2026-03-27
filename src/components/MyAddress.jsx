@@ -286,35 +286,35 @@ export function MyAddress() {
       <style>{styles}</style>
       
       {/* Breadcrumb */}
-      <div className="px-6 py-6 flex items-center gap-2 text-sm text-gray-600">
-        <Home className="w-4 h-4" />
-        <span>My Account</span>
-        <ChevronRight className="w-4 h-4" />
-        <span className="text-gray-900 font-medium">My Address</span>
+      <div className="px-4 md:px-8 py-4 md:py-6 flex items-center gap-2 text-xs md:text-sm text-gray-600 max-w-7xl mx-auto w-full">
+        <Home className="w-3 md:w-4 h-3 md:h-4 flex-shrink-0" />
+        <span className="whitespace-nowrap">My Account</span>
+        <ChevronRight className="w-3 md:w-4 h-3 md:h-4 flex-shrink-0" />
+        <span className="text-gray-900 font-medium whitespace-nowrap">My Address</span>
       </div>
 
       {/* Header with Add Button */}
-      <div className="px-6 md:px-12 py-8 max-w-7xl mx-auto w-full">
-        <div className="flex items-center justify-between mb-12">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-2" style={{
+      <div className="px-4 md:px-8 py-8 md:py-12 max-w-7xl mx-auto w-full">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 md:gap-8 mb-10 md:mb-16">
+          <div className="flex-1">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 mb-2 md:mb-3" style={{
               textShadow: '0 8px 16px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(250, 204, 21, 0.3)',
               letterSpacing: '-1px'
             }}>
               My Addresses
             </h1>
-            <p className="text-gray-600 text-lg">Manage your delivery addresses</p>
+            <p className="text-gray-600 text-base md:text-lg">Manage your delivery addresses</p>
           </div>
           <button 
             onClick={() => setShowModal(true)}
-            className="flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-500 hover:to-amber-500 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg text-2xl"
+            className="flex items-center justify-center gap-2 bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-500 hover:to-amber-500 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg text-2xl w-14 h-14 flex-shrink-0"
           >
             +
           </button>
         </div>
 
         {/* Address Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 xl:gap-10">
           {addresses.map((address, index) => (
             <div key={address.id} className="address-card">
               <img 

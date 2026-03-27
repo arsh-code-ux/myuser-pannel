@@ -6,7 +6,7 @@ import image9 from '../image9.jpg';
 import image7 from '../image7.jpg';
 import image6 from '../image6.jpg';
 
-export function BestsellerProducts() {
+export function BestsellerProducts({ onNavigate }) {
   const products = [
     {
       id: 1,
@@ -56,16 +56,16 @@ export function BestsellerProducts() {
   ];
 
   return (
-    <section className="py-8 md:py-16 lg:py-32 bg-white">
-      <div className="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
-        <div className="mb-8 md:mb-12 lg:mb-16">
-          <p className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mb-2 md:mb-3">Curated Collection</p>
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black mb-3 md:mb-4">Bestsellers</h2>
-          <p className="text-xs md:text-sm lg:text-base text-gray-700">Discover the most coveted artifacts and artworks from our exclusive collection</p>
+    <section className="py-20 md:py-32 bg-white">
+      <div className="luxury-container">
+        <div className="mb-16">
+          <p className="section-subtitle">Curated Collection</p>
+          <h2 className="section-title">Bestsellers</h2>
+          <p className="text-gray-700 text-base">Discover the most coveted artifacts and artworks from our exclusive collection</p>
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-4 lg:gap-6 mb-8 md:mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 mb-12">
           {products.map((product) => (
             <div key={product.id} className="group cursor-pointer">
               {/* Product Image */}
@@ -77,27 +77,27 @@ export function BestsellerProducts() {
                 />
                 
                 {/* Wishlist Icon */}
-                <button className="absolute top-2 md:top-3 right-2 md:right-3 bg-yellow-400 rounded-full p-1.5 md:p-2 shadow-md hover:bg-yellow-500 transition opacity-0 group-hover:opacity-100 duration-300">
-                  <Heart className="w-3 md:w-4 h-3 md:h-4 text-black" fill="currentColor" />
+                <button className="absolute top-3 right-3 bg-yellow-400 rounded-full p-2 shadow-md hover:bg-yellow-500 transition opacity-0 group-hover:opacity-100 duration-300">
+                  <Heart className="w-4 h-4 text-black" fill="currentColor" />
                 </button>
                 
                 {/* Sale Badge */}
                 {product.oldPrice && (
-                  <div className="absolute top-2 md:top-3 left-2 md:left-3 bg-green-500 text-white px-2 md:px-3 py-0.5 md:py-1 rounded text-xs font-bold">
+                  <div className="absolute top-3 left-3 bg-green-500 text-white px-3 py-1 rounded text-xs font-bold">
                     Sale
                   </div>
                 )}
               </div>
 
               {/* Product Info */}
-              <div className="mt-2 md:mt-3 lg:mt-4">
-                <h3 className="font-semibold text-xs md:text-sm text-black group-hover:text-gray-700 transition line-clamp-2">{product.name}</h3>
-                <p className="text-xs text-gray-600 mb-0.5 md:mb-1 line-clamp-1">{product.artist}</p>
-                <p className="text-xs text-gray-500 mb-2 md:mb-3 uppercase tracking-wide line-clamp-1">{product.category}</p>
+              <div className="mt-4">
+                <h3 className="font-semibold text-sm text-black group-hover:text-gray-700 transition">{product.name}</h3>
+                <p className="text-xs text-gray-600 mb-1">{product.artist}</p>
+                <p className="text-xs text-gray-500 mb-3 uppercase tracking-wide">{product.category}</p>
 
                 {/* Price */}
-                <div className="flex items-center gap-1 md:gap-2">
-                  <span className="font-bold text-xs md:text-sm text-black">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-sm text-black">
                     {product.price}
                   </span>
                   {product.oldPrice && (
@@ -110,7 +110,7 @@ export function BestsellerProducts() {
         </div>
 
         <div className="text-center">
-          <button className="px-6 md:px-8 py-2 md:py-2.5 border border-black bg-black text-white font-medium rounded-full hover:bg-white hover:text-black transition text-xs md:text-sm">All artifacts →</button>
+          <button onClick={() => onNavigate && onNavigate('artifacts-gallery')} className="luxury-button">All artifacts →</button>
         </div>
       </div>
     </section>

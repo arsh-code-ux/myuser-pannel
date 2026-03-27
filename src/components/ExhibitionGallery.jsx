@@ -77,23 +77,23 @@ export function ExhibitionGallery({ onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-yellow-700 z-50 flex flex-col items-center justify-center overflow-y-auto py-8 md:py-16">
+    <div className="fixed inset-0 bg-yellow-700 z-50 flex flex-col items-center justify-center overflow-y-auto py-8 md:py-12 lg:py-16 px-4">
       {/* Close Button */}
       <button
         onClick={onClose}
-        className="absolute top-8 right-8 text-white hover:text-gray-300 z-10 transition"
+        className="absolute top-4 md:top-6 lg:top-8 right-4 md:right-6 lg:right-8 text-white hover:text-gray-300 z-10 transition"
       >
-        <X size={40} />
+        <X size={32} className="md:w-10 md:h-10" />
       </button>
 
       {/* Gallery Section - Takes most of the space */}
-      <div className="flex-1 relative w-full h-full flex items-center justify-center perspective pt-8 md:pt-16">
+      <div className="flex-1 relative w-full h-full flex items-center justify-center perspective pt-4 md:pt-8 lg:pt-12">
         {/* Rotating Wall with Images */}
         <div
           className="relative"
           style={{
-            width: '1000px',
-            height: '800px',
+            width: 'clamp(300px, 90vw, 1000px)',
+            height: 'clamp(350px, 60vh, 800px)',
             transformStyle: 'preserve-3d',
             transform: `rotateY(${rotation}deg)`,
             transition: isAutoRotating ? 'none' : 'transform 0.6s ease-out',
@@ -101,16 +101,16 @@ export function ExhibitionGallery({ onClose }) {
         >
           {images.map((image, index) => {
             const angle = (index * 360) / images.length;
-            const radius = 550;
+            const radius = 'clamp(250px, 35vw, 550px)';
 
             return (
               <div
                 key={index}
-                className="absolute rounded-xl overflow-hidden shadow-2xl cursor-pointer hover:scale-110 transition-transform duration-300 border-4 border-yellow-500/50 hover:border-yellow-400"
+                className="absolute rounded-lg md:rounded-xl overflow-hidden shadow-2xl cursor-pointer hover:scale-110 transition-transform duration-300 border-2 md:border-4 border-yellow-500/50 hover:border-yellow-400"
                 style={{
-                  width: '350px',
-                  height: '450px',
-                  transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
+                  width: 'clamp(200px, 60vw, 350px)',
+                  height: 'clamp(250px, 70vh, 450px)',
+                  transform: `rotateY(${angle}deg) translateZ(${radius})`,
                   backfaceVisibility: 'hidden',
                 }}
               >
@@ -119,8 +119,8 @@ export function ExhibitionGallery({ onClose }) {
                   alt={`Exhibition ${index + 1}`}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end justify-center pb-6">
-                  <p className="text-white font-serif text-2xl font-bold">Exhibition {index + 1}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end justify-center pb-4 md:pb-6">
+                  <p className="text-white font-serif text-sm md:text-2xl font-bold">Exhibition {index + 1}</p>
                 </div>
               </div>
             );
@@ -130,32 +130,32 @@ export function ExhibitionGallery({ onClose }) {
         {/* Navigation Buttons */}
         <button
           onClick={() => handleRotate('left')}
-          className="absolute left-12 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-6 rounded-full z-20 transition-all duration-200 hover:scale-110"
+          className="absolute left-2 sm:left-4 md:left-8 lg:left-12 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 sm:p-3 md:p-4 lg:p-6 rounded-full z-20 transition-all duration-200 hover:scale-110"
         >
-          <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 sm:w-6 md:w-8 lg:w-10 h-5 sm:h-6 md:h-8 lg:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
 
         <button
           onClick={() => handleRotate('right')}
-          className="absolute right-12 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-6 rounded-full z-20 transition-all duration-200 hover:scale-110"
+          className="absolute right-2 sm:right-4 md:right-8 lg:right-12 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 sm:p-3 md:p-4 lg:p-6 rounded-full z-20 transition-all duration-200 hover:scale-110"
         >
-          <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 sm:w-6 md:w-8 lg:w-10 h-5 sm:h-6 md:h-8 lg:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
       </div>
 
       {/* Heading Section - Between Gallery and Footer */}
-      <div className="w-full px-4 -mt-16 mb-2 text-center">
-        <h1 className="floating-heading text-8xl md:text-9xl font-black text-white mb-2 leading-none" style={{ fontWeight: 900, letterSpacing: '-2px', WebkitTextStroke: '1px rgba(255,255,255,0.3)', textShadow: '0 4px 20px rgba(0,0,0,0.8)' }}>Featured Exhibitions</h1>
-        <p className="text-gray-300 text-lg mb-4">Explore all artworks in 360° view</p>
+      <div className="w-full px-2 md:px-4 -mt-8 md:-mt-12 lg:-mt-16 mb-2 text-center">
+        <h1 className="floating-heading text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-white mb-2 leading-none" style={{ fontWeight: 900, letterSpacing: '-1px', WebkitTextStroke: '0.5px rgba(255,255,255,0.3)', textShadow: '0 4px 20px rgba(0,0,0,0.8)' }}>Featured Exhibitions</h1>
+        <p className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg mb-4">Explore all artworks in 360° view</p>
       </div>
 
       {/* Bottom Info Section */}
-      <div className="w-full bg-gradient-to-t from-amber-900 via-yellow-800/80 to-transparent pt-8 pb-12 px-4 text-center border-t border-yellow-500/50">
-        <p className="text-yellow-100 text-base">Gallery rotates automatically • Click arrows to control</p>
+      <div className="w-full bg-gradient-to-t from-amber-900 via-yellow-800/80 to-transparent pt-6 md:pt-8 pb-8 md:pb-12 px-4 text-center border-t border-yellow-500/50">
+        <p className="text-yellow-100 text-xs sm:text-sm">Gallery rotates automatically • Click arrows to control</p>
       </div>
     </div>
   );

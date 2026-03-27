@@ -2,6 +2,7 @@ import './App.css'
 import './index.css'
 import { useState } from 'react'
 import { Header } from './components/Header'
+import { MyAccount } from './components/MyAccount'
 import { MyInformation } from './components/MyInformation'
 import { MyAddress } from './components/MyAddress'
 import { MyPurchases } from './components/MyPurchases'
@@ -12,6 +13,7 @@ import { ArtworkGallery } from './components/ArtworkGallery'
 import { FeaturedArtists } from './components/FeaturedArtists'
 import { AllExpertsPage } from './components/AllExpertsPage'
 import { AllArtworks } from './components/AllArtworks'
+import { ArtifactsGallery } from './components/ArtifactsGallery'
 import { CheckoutPage } from './components/CheckoutPage'
 import { ConversationsSection } from './components/ConversationsSection'
 import { GalleriesSection } from './components/GalleriesSection'
@@ -72,6 +74,13 @@ function App() {
         </>
       )}
       
+      {currentPage === 'my-account' && (
+        <>
+          <MyAccount onNavigate={setCurrentPage} />
+          <Footer />
+        </>
+      )}
+      
       {currentPage === 'my-information' && (
         <>
           <MyInformation />
@@ -103,8 +112,8 @@ function App() {
       {currentPage === 'creative-hub' && (
         <>
           <FeaturedExhibition />
-          <BestsellerProducts />
-          <ArtworkGallery />
+          <BestsellerProducts onNavigate={setCurrentPage} />
+          <ArtworkGallery onNavigate={setCurrentPage} />
           <FeaturedArtists onNavigate={setCurrentPage} />
           <GalleriesSection />
           <CollectionsSection />
@@ -120,6 +129,13 @@ function App() {
         </>
       )}
 
+      {currentPage === 'all-exhibitions' && (
+        <>
+          <ExhibitionsPage onNavigate={setCurrentPage} />
+          <Footer />
+        </>
+      )}
+
       {currentPage === 'all-artworks' && (
         <>
           <AllArtworks 
@@ -127,6 +143,13 @@ function App() {
             onAddToWishlist={addToWishlist}
             onAddToCart={addToCart}
           />
+          <Footer />
+        </>
+      )}
+
+      {currentPage === 'artifacts-gallery' && (
+        <>
+          <ArtifactsGallery isFullPage={true} onNavigate={setCurrentPage} />
           <Footer />
         </>
       )}

@@ -46,6 +46,18 @@ export function Header({
     onNavigate('home');
   };
 
+  const handleUserIconClick = () => {
+    // Toggle the dropdown on desktop
+    setIsAccountDropdownOpen(!isAccountDropdownOpen);
+  };
+
+  const handleMobileUserIconClick = () => {
+    // Navigate to my-account page on mobile
+    onNavigate('my-account');
+    setIsMobileAccountOpen(false);
+    setIsMenuOpen(false);
+  };
+
   return (
     <>
       <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
@@ -121,6 +133,19 @@ export function Header({
 
             {/* Icons */}
             <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+              {/* User/Sign In - Desktop */}
+              <div className="relative hidden md:block">
+                <button 
+                  onClick={handleUserIconClick}
+                  onMouseEnter={() => setIsAccountDropdownOpen(true)}
+                  onMouseLeave={() => setIsAccountDropdownOpen(false)}
+                  className="relative"
+                >
+                  <User className="w-4 sm:w-5 h-4 sm:h-5 cursor-pointer hover:text-gray-600 transition duration-300" />
+                </button>
+              </div>
+
+              {/* Wishlist */}
               <div className="relative">
                 <button 
                   onClick={() => setShowWishlist(true)}
@@ -134,6 +159,8 @@ export function Header({
                   )}
                 </button>
               </div>
+
+              {/* Cart */}
               <div className="relative">
                 <button 
                   onClick={() => setShowCart(true)}
@@ -147,124 +174,17 @@ export function Header({
                   )}
                 </button>
               </div>
+
+              {/* User/Sign In - Mobile */}
+              <div className="relative md:hidden">
+                <button 
+                  onClick={handleMobileUserIconClick}
+                  className="relative"
+                >
+                  <User className="w-4 sm:w-5 h-4 sm:h-5 cursor-pointer hover:text-gray-600 transition duration-300" />
+                </button>
+              </div>
             </div>
-
-            {/* Mobile Menu Button */}
-            <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="w-5 sm:w-6 h-5 sm:h-6" /> : <Menu className="w-5 sm:w-6 h-5 sm:h-6" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Search */}
-        <div className="md:hidden mt-3">
-          <input
-            type="text"
-            placeholder="Search artifacts..."
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-black"
-          />
-        </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <nav className="lg:hidden mt-3 py-3 border-t border-gray-200 space-y-2">
-            <a href="#" className="block text-xs sm:text-sm font-medium hover:text-gray-600 py-2">Home</a>
-            <a href="#" className="block text-xs sm:text-sm font-medium hover:text-gray-600 py-2">Collections</a>
-            <a href="#" className="block text-xs sm:text-sm font-medium hover:text-gray-600 py-2">About</a>
-            
-            {/* Mobile Account Menu */}
-            <div className="border-t border-gray-200 pt-2">
-              <button 
-                onClick={() => setIsMobileAccountOpen(!isMobileAccountOpen)}
-                className="w-full flex items-center justify-between text-xs sm:text-sm font-medium hover:text-gray-600 py-2"
-              >
-                <span className="flex items-center gap-2">
-                  <User className="w-3 sm:w-4 h-3 sm:h-4" />
-                  Sign in
-                </span>
-                <span className="text-xs">{isMobileAccountOpen ? '▼' : '▶'}</span>
-              </button>
-
-              {/* Mobile Account Dropdown */}
-              {isMobileAccountOpen && (
-                <div className="ml-4 space-y-1 mt-2 border-l border-gray-300 pl-3">
-                  <button 
-                    onClick={() => {
-                      handleMyInformation();
-                      setIsMenuOpen(false);
-                      setIsMobileAccountOpen(false);
-                    }}
-                    className="w-full text-left text-xs sm:text-sm font-medium text-gray-900 hover:text-gray-600 py-2 flex items-center gap-2"
-                  >
-                    <User className="w-3 sm:w-4 h-3 sm:h-4" />
-                    My Information
-                  </button>
-                  <button 
-                    onClick={() => {
-                      handleMyAddress();
-                      setIsMenuOpen(false);
-                      setIsMobileAccountOpen(false);
-                    }}
-                    className="w-full text-left text-xs sm:text-sm font-medium text-gray-900 hover:text-gray-600 py-2 flex items-center gap-2"
-                  >
-                    <User className="w-3 sm:w-4 h-3 sm:h-4" />
-                    My Address
-                  </button>
-                  <button 
-                    onClick={() => {
-                      handleMyPurchases();
-                      setIsMenuOpen(false);
-                      setIsMobileAccountOpen(false);
-                    }}
-                    className="w-full text-left text-xs sm:text-sm font-medium text-gray-900 hover:text-gray-600 py-2 flex items-center gap-2"
-                  >
-                    <ShoppingCart className="w-3 sm:w-4 h-3 sm:h-4" />
-                    My Purchase
-                  </button>
-                  <button 
-                    onClick={() => {
-                      handleMyStore();
-                      setIsMenuOpen(false);
-                      setIsMobileAccountOpen(false);
-                    }}
-                    className="w-full text-left text-xs sm:text-sm font-medium text-gray-900 hover:text-gray-600 py-2 flex items-center gap-2"
-                  >
-                    <User className="w-3 sm:w-4 h-3 sm:h-4" />
-                    My Store
-                  </button>
-                  <button 
-                    onClick={() => {
-                      handleCreativeHub();
-                      setIsMenuOpen(false);
-                      setIsMobileAccountOpen(false);
-                    }}
-                    className="w-full text-left text-xs sm:text-sm font-medium text-gray-900 hover:text-gray-600 py-2 flex items-center gap-2"
-                  >
-                    <User className="w-3 sm:w-4 h-3 sm:h-4" />
-                    Creative Hub
-                  </button>
-                  <div className="border-t border-gray-300 my-2"></div>
-                  <button className="w-full text-left text-xs sm:text-sm font-medium text-red-600 hover:text-red-700 py-2 flex items-center gap-2">
-                    <LogOut className="w-3 sm:w-4 h-3 sm:h-4" />
-                    Logout
-                  </button>
-                </div>
-              )}
-            </div>
-          </nav>
-        )}
-      </div>
-
-      {/* Category Navigation */}
-      <div className="hidden md:block border-t border-gray-200 bg-white">
-        <div className="luxury-container py-3">
-          <div className="flex gap-8 overflow-x-auto text-sm font-medium">
-            <button className="hover:text-gray-600 transition whitespace-nowrap">Artifacts</button>
-            <button className="hover:text-gray-600 transition whitespace-nowrap">Paintings</button>
-            <button className="hover:text-gray-600 transition whitespace-nowrap">Sculptures</button>
-            <button className="hover:text-gray-600 transition whitespace-nowrap">Photography</button>
-            <button className="hover:text-gray-600 transition whitespace-nowrap">Collectibles</button>
-            <button className="hover:text-gray-600 transition whitespace-nowrap">Exhibitions</button>
           </div>
         </div>
       </div>

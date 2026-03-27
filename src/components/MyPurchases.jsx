@@ -189,38 +189,40 @@ export function MyPurchases({ onNavigate }) {
       <div className="relative z-10 w-full">
         {/* Header - Full Screen Background */}
         <div 
-          className="w-full text-center px-4 relative bg-cover bg-center bg-no-repeat"
+          className="w-full text-center px-4 md:px-8 relative bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url(${newsBg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'scroll',
-            minHeight: '100vh',
-            height: '100vh',
+            minHeight: '70vh',
+            height: 'auto',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
+            paddingTop: '4rem',
+            paddingBottom: '4rem'
           }}
         >
           {/* Content */}
-          <div className="inline-block mb-6 relative z-10">
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <ShoppingBag className="w-10 md:w-14 lg:w-16 h-10 md:h-14 lg:h-16 text-yellow-400 animate-bounce" />
+          <div className="inline-block mb-6 relative z-10 w-full">
+            <div className="flex items-center justify-center gap-2 md:gap-4 mb-4 md:mb-8 flex-wrap">
+              <ShoppingBag className="w-8 sm:w-10 md:w-14 lg:w-16 h-8 sm:h-10 md:h-14 lg:h-16 text-yellow-400 animate-bounce flex-shrink-0" />
               <h1 
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-black tracking-tighter"
+                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-black tracking-tighter"
                 style={{ 
                   fontWeight: 900,
                   textShadow: '0 6px 12px rgba(255, 255, 255, 0.8), 0 3px 6px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(255, 255, 255, 0.4)'
                 }}
               >
-                MY<span className="text-black"> PURCHASES</span>
+                MY PURCHASES
               </h1>
-              <ShoppingBag className="w-10 md:w-14 lg:w-16 h-10 md:h-14 lg:h-16 text-yellow-400 animate-bounce" style={{ animationDelay: '0.5s' }} />
+              <ShoppingBag className="w-8 sm:w-10 md:w-14 lg:w-16 h-8 sm:h-10 md:h-14 lg:h-16 text-yellow-400 animate-bounce flex-shrink-0" style={{ animationDelay: '0.5s' }} />
             </div>
           </div>
           <p 
-            className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-black max-w-3xl mx-auto relative z-10"
+            className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-black max-w-3xl mx-auto relative z-10 px-4"
             style={{
               textShadow: '0 4px 8px rgba(255, 255, 255, 0.7), 0 2px 4px rgba(255, 255, 255, 0.5)'
             }}
@@ -231,27 +233,28 @@ export function MyPurchases({ onNavigate }) {
 
         {/* Infinite Carousel - Three Boxes Shuffle Positions */}
         <div 
-          className="relative w-full h-screen flex items-center justify-center overflow-visible px-4 bg-white"
+          className="relative w-full py-12 md:py-16 lg:py-20 flex items-center justify-center overflow-x-hidden px-4 md:px-6 lg:px-8 bg-white"
           style={{
             backgroundColor: '#ffffff',
-            backgroundImage: 'none'
+            backgroundImage: 'none',
+            minHeight: 'auto'
           }}
         >
           <div className="relative w-full max-w-7xl mx-auto h-full flex items-center justify-center">
             {/* Carousel Container */}
-            <div className="relative w-full h-2/3 flex items-center justify-center perspective">
+            <div className="relative w-full h-96 sm:h-96 md:h-[500px] lg:h-[600px] flex items-center justify-center perspective">
               
               {/* BOX 1 - Rotates: Left → Center → Right → Left */}
               <div 
-                className="absolute flex-shrink-0 rounded-3xl overflow-hidden bg-gradient-to-br from-amber-900 to-slate-900 transform z-10 transition-all duration-700 ease-in-out"
+                className="absolute flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden bg-gradient-to-br from-amber-900 to-slate-900 transform z-10 transition-all duration-700 ease-in-out"
                 style={{
-                  width: activeIndex % 3 === 0 ? '300px' : activeIndex % 3 === 1 ? '520px' : '380px',
+                  width: activeIndex % 3 === 0 ? 'clamp(200px, 50vw, 300px)' : activeIndex % 3 === 1 ? 'clamp(280px, 70vw, 520px)' : 'clamp(220px, 60vw, 380px)',
                   height: activeIndex % 3 === 0 ? '72%' : activeIndex % 3 === 1 ? '100%' : '85%',
                   opacity: activeIndex % 3 === 0 ? 0.5 : activeIndex % 3 === 1 ? 1 : 0.6,
-                  left: activeIndex % 3 === 0 ? '-220px' : activeIndex % 3 === 1 ? '50%' : 'auto',
-                  right: activeIndex % 3 === 2 ? '-220px' : 'auto',
+                  left: activeIndex % 3 === 0 ? '-15%' : activeIndex % 3 === 1 ? '50%' : 'auto',
+                  right: activeIndex % 3 === 2 ? '-15%' : 'auto',
                   transform: activeIndex % 3 === 1 ? 'translateX(-50%) scale(1.05)' : 'none',
-                  borderWidth: activeIndex % 3 === 0 ? '20px' : activeIndex % 3 === 1 ? '24px' : '28px',
+                  borderWidth: activeIndex % 3 === 0 ? '12px' : activeIndex % 3 === 1 ? '16px' : '14px',
                   borderColor: activeIndex % 3 === 0 ? '#b45309' : activeIndex % 3 === 1 ? '#eab308' : '#fcd34d',
                   boxShadow: activeIndex % 3 === 0 ? '0 10px 30px rgba(180,83,9,0.3)' : activeIndex % 3 === 1 ? '0 20px 60px rgba(234,179,8,0.6)' : '0 10px 30px rgba(252,211,77,0.3)',
                   animation: activeIndex % 3 === 1 ? 'centerPopup 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards' : 'none'
@@ -266,15 +269,15 @@ export function MyPurchases({ onNavigate }) {
 
               {/* BOX 2 - Rotates: Right → Left → Center → Right */}
               <div 
-                className="absolute flex-shrink-0 rounded-3xl overflow-hidden bg-gradient-to-br from-amber-900 to-slate-900 transform z-10 transition-all duration-700 ease-in-out"
+                className="absolute flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden bg-gradient-to-br from-amber-900 to-slate-900 transform z-10 transition-all duration-700 ease-in-out"
                 style={{
-                  width: activeIndex % 3 === 0 ? '380px' : activeIndex % 3 === 1 ? '300px' : '520px',
+                  width: activeIndex % 3 === 0 ? 'clamp(220px, 60vw, 380px)' : activeIndex % 3 === 1 ? 'clamp(200px, 50vw, 300px)' : 'clamp(280px, 70vw, 520px)',
                   height: activeIndex % 3 === 0 ? '85%' : activeIndex % 3 === 1 ? '72%' : '100%',
                   opacity: activeIndex % 3 === 0 ? 0.6 : activeIndex % 3 === 1 ? 0.5 : 1,
-                  left: activeIndex % 3 === 0 ? 'auto' : activeIndex % 3 === 1 ? '-220px' : '50%',
-                  right: activeIndex % 3 === 0 ? '-220px' : 'auto',
+                  left: activeIndex % 3 === 0 ? 'auto' : activeIndex % 3 === 1 ? '-15%' : '50%',
+                  right: activeIndex % 3 === 0 ? '-15%' : 'auto',
                   transform: activeIndex % 3 === 2 ? 'translateX(-50%) scale(1.05)' : 'none',
-                  borderWidth: activeIndex % 3 === 0 ? '28px' : activeIndex % 3 === 1 ? '20px' : '24px',
+                  borderWidth: activeIndex % 3 === 0 ? '14px' : activeIndex % 3 === 1 ? '12px' : '16px',
                   borderColor: activeIndex % 3 === 0 ? '#fcd34d' : activeIndex % 3 === 1 ? '#b45309' : '#eab308',
                   boxShadow: activeIndex % 3 === 0 ? '0 10px 30px rgba(252,211,77,0.3)' : activeIndex % 3 === 1 ? '0 10px 30px rgba(180,83,9,0.3)' : '0 20px 60px rgba(234,179,8,0.6)',
                   animation: activeIndex % 3 === 2 ? 'centerPopup 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards' : 'none'
@@ -289,15 +292,15 @@ export function MyPurchases({ onNavigate }) {
 
               {/* BOX 3 - Rotates: Center → Right → Left → Center */}
               <div 
-                className="absolute flex-shrink-0 rounded-3xl overflow-hidden bg-gradient-to-br from-amber-900 to-slate-900 transform z-10 transition-all duration-700 ease-in-out"
+                className="absolute flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden bg-gradient-to-br from-amber-900 to-slate-900 transform z-10 transition-all duration-700 ease-in-out"
                 style={{
-                  width: activeIndex % 3 === 0 ? '520px' : activeIndex % 3 === 1 ? '380px' : '300px',
+                  width: activeIndex % 3 === 0 ? 'clamp(280px, 70vw, 520px)' : activeIndex % 3 === 1 ? 'clamp(220px, 60vw, 380px)' : 'clamp(200px, 50vw, 300px)',
                   height: activeIndex % 3 === 0 ? '100%' : activeIndex % 3 === 1 ? '85%' : '72%',
                   opacity: activeIndex % 3 === 0 ? 1 : activeIndex % 3 === 1 ? 0.6 : 0.5,
-                  left: activeIndex % 3 === 0 ? '50%' : activeIndex % 3 === 1 ? 'auto' : '-220px',
-                  right: activeIndex % 3 === 1 ? '-220px' : 'auto',
+                  left: activeIndex % 3 === 0 ? '50%' : activeIndex % 3 === 1 ? 'auto' : '-15%',
+                  right: activeIndex % 3 === 1 ? 'auto' : '-15%',
                   transform: activeIndex % 3 === 0 ? 'translateX(-50%) scale(1.05)' : 'none',
-                  borderWidth: activeIndex % 3 === 0 ? '24px' : activeIndex % 3 === 1 ? '28px' : '20px',
+                  borderWidth: activeIndex % 3 === 0 ? '16px' : activeIndex % 3 === 1 ? '14px' : '12px',
                   borderColor: activeIndex % 3 === 0 ? '#eab308' : activeIndex % 3 === 1 ? '#fcd34d' : '#b45309',
                   boxShadow: activeIndex % 3 === 0 ? '0 20px 60px rgba(234,179,8,0.6)' : activeIndex % 3 === 1 ? '0 10px 30px rgba(252,211,77,0.3)' : '0 10px 30px rgba(180,83,9,0.3)',
                   animation: activeIndex % 3 === 0 ? 'centerPopup 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards' : 'none'

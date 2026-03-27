@@ -42,7 +42,6 @@ export function ConversationsSection() {
             <p className="text-xs md:text-sm text-gray-500 uppercase tracking-widest mb-2 md:mb-3">Insights & Knowledge</p>
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black">Conversations with Experts</h2>
           </div>
-          <a href="#" className="hidden md:inline-block px-6 md:px-8 py-2 md:py-2.5 border border-black bg-black text-white font-medium rounded-full hover:bg-white hover:text-black transition text-xs md:text-sm">Read more →</a>
         </div>
 
         {/* Conversations Grid */}
@@ -113,10 +112,6 @@ export function ConversationsSection() {
             </div>
           </div>
         )}
-
-        <div className="text-center md:hidden">
-          <a href="#" className="px-6 py-2 border border-black bg-black text-white font-medium rounded-full hover:bg-white hover:text-black transition text-xs inline-block">Read more →</a>
-        </div>
       </div>
     </section>
   );

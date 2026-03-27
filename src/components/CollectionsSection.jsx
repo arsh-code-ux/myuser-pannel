@@ -43,10 +43,6 @@ export function CollectionsSection() {
             </div>
           ))}
         </div>
-
-        <div className="text-center">
-          <a href="#" className="px-6 md:px-8 py-2 md:py-2.5 border border-black bg-black text-white font-medium rounded-full hover:bg-white hover:text-black transition text-xs md:text-sm inline-block">Explore all collections →</a>
-        </div>
       </div>
     </section>
   );

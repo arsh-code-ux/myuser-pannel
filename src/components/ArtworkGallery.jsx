@@ -7,7 +7,7 @@ import image1 from '../image 1.jpg';
 import image15 from '../image15.jpg';
 import image16 from '../image16.jpg';
 
-export function ArtworkGallery() {
+export function ArtworkGallery({ onNavigate }) {
   const [loading, setLoading] = useState(false);
 
   const sampleArtworks = [
@@ -127,10 +127,6 @@ export function ArtworkGallery() {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="text-center">
-          <button className="px-6 md:px-8 py-2 md:py-2.5 border border-black bg-black text-white font-medium rounded-full hover:bg-white hover:text-black transition text-xs md:text-sm">View All Artworks →</button>
         </div>
       </div>
     </section>

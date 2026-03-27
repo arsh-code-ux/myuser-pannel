@@ -17,7 +17,7 @@ import image5 from '../image5.jpg';
 import image6 from '../image6.jpg';
 import image7 from '../image7.jpg';
 
-export function ArtifactsGallery({ isOpen, onClose }) {
+export function ArtifactsGallery({ isOpen, onClose, isFullPage = false, onNavigate }) {
   const artifacts = [
     {
       id: 1,
@@ -117,73 +117,76 @@ export function ArtifactsGallery({ isOpen, onClose }) {
     },
   ];
 
-  if (!isOpen) return null;
+  // For modal view
+  if (!isFullPage && !isOpen) return null;
 
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-start justify-center overflow-y-auto pt-8 pb-8">
-      <div className="bg-white w-full max-w-7xl rounded-2xl shadow-2xl mx-4">
-        {/* Header */}
-        <div className="flex justify-between items-center p-8 border-b border-gray-200">
-          <div>
-            <h2 className="text-4xl font-bold text-black">All Artifacts</h2>
-            <p className="text-gray-600 mt-2">Explore our complete collection of exclusive artworks</p>
-          </div>
+  const galleryContent = (
+    <>
+      {/* Header */}
+      <div className={`${isFullPage ? 'p-8 md:p-12 border-b border-gray-200 text-center' : 'p-8 border-b border-gray-200 flex justify-between items-center'}`}>
+        <div className={isFullPage ? 'w-full' : ''}>
+          <h2 className={`${isFullPage ? 'text-5xl md:text-6xl lg:text-7xl' : 'text-4xl'} font-black text-black`}>All Artifacts</h2>
+          <p className={`${isFullPage ? 'text-lg md:text-xl text-gray-700 mt-3' : 'text-gray-600 mt-2'}`}>Explore our complete collection of exclusive artworks</p>
+        </div>
+        {!isFullPage && (
           <button
             onClick={onClose}
-            className="bg-gray-200 hover:bg-gray-300 transition p-2 rounded-full"
+            className="bg-gray-200 hover:bg-gray-300 transition p-2 rounded-full flex-shrink-0"
           >
             <X className="w-6 h-6 text-black" />
           </button>
-        </div>
+        )}
+      </div>
 
-        {/* Grid Container */}
-        <div className="p-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {artifacts.map((artifact) => (
-              <div
-                key={artifact.id}
-                className="group cursor-pointer"
-              >
-                {/* Artifact Card */}
-                <div className="h-full flex flex-col">
-                  {/* Image Container */}
-                  <div className="w-full aspect-square rounded-lg overflow-hidden relative bg-gray-100 shadow-md hover:shadow-2xl transition-all duration-300">
-                    <img
-                      src={artifact.image}
-                      alt={artifact.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
+      {/* Grid Container */}
+      <div className="p-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {artifacts.map((artifact) => (
+            <div
+              key={artifact.id}
+              className="group cursor-pointer"
+            >
+              {/* Artifact Card */}
+              <div className="h-full flex flex-col">
+                {/* Image Container */}
+                <div className="w-full aspect-square rounded-lg overflow-hidden relative bg-gray-100 shadow-md hover:shadow-2xl transition-all duration-300">
+                  <img
+                    src={artifact.image}
+                    alt={artifact.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
 
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
 
-                    {/* Wishlist Icon */}
-                    <button className="absolute top-3 right-3 bg-yellow-400 rounded-full p-2.5 shadow-lg hover:bg-yellow-500 transition opacity-0 group-hover:opacity-100 duration-300 transform translate-y-4 group-hover:translate-y-0">
-                      <Heart className="w-5 h-5 text-black" fill="currentColor" />
-                    </button>
-                  </div>
+                  {/* Wishlist Icon */}
+                  <button className="absolute top-3 right-3 bg-yellow-400 rounded-full p-2.5 shadow-lg hover:bg-yellow-500 transition opacity-0 group-hover:opacity-100 duration-300 transform translate-y-4 group-hover:translate-y-0">
+                    <Heart className="w-5 h-5 text-black" fill="currentColor" />
+                  </button>
+                </div>
 
-                  {/* Info Section */}
-                  <div className="mt-4 flex-1 flex flex-col">
-                    <h3 className="font-semibold text-sm text-black group-hover:text-gray-700 transition line-clamp-2">
-                      {artifact.name}
-                    </h3>
-                    <p className="text-xs text-gray-500 mt-1 uppercase tracking-wider font-medium">
-                      {artifact.category}
-                    </p>
-                    
-                    {/* View Details Button */}
-                    <button className="mt-auto pt-3 text-xs font-semibold text-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:text-gray-600">
-                      View Details →
-                    </button>
-                  </div>
+                {/* Info Section */}
+                <div className="mt-4 flex-1 flex flex-col">
+                  <h3 className="font-semibold text-sm text-black group-hover:text-gray-700 transition line-clamp-2">
+                    {artifact.name}
+                  </h3>
+                  <p className="text-xs text-gray-500 mt-1 uppercase tracking-wider font-medium">
+                    {artifact.category}
+                  </p>
+                  
+                  {/* View Details Button */}
+                  <button className="mt-auto pt-3 text-xs font-semibold text-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:text-gray-600">
+                    View Details →
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
+      </div>
 
-        {/* Footer */}
+      {/* Footer */}
+      {!isFullPage && (
         <div className="px-8 py-6 border-t border-gray-200 flex justify-center">
           <button
             onClick={onClose}
@@ -192,6 +195,37 @@ export function ArtifactsGallery({ isOpen, onClose }) {
             Close Gallery
           </button>
         </div>
+      )}
+
+      {isFullPage && (
+        <div className="px-8 py-6 border-t border-gray-200 flex justify-center">
+          <button
+            onClick={() => onNavigate && onNavigate('creative-hub')}
+            className="px-8 py-3 bg-black text-white font-semibold rounded-full hover:bg-gray-800 transition-colors duration-300"
+          >
+            Back to Creative Hub
+          </button>
+        </div>
+      )}
+    </>
+  );
+
+  // For full page view
+  if (isFullPage) {
+    return (
+      <section className="py-20 md:py-32 bg-white">
+        <div className="luxury-container px-4 md:px-6">
+          {galleryContent}
+        </div>
+      </section>
+    );
+  }
+
+  // For modal view
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-start justify-center overflow-y-auto pt-8 pb-8">
+      <div className="bg-white w-full max-w-7xl rounded-2xl shadow-2xl mx-4">
+        {galleryContent}
       </div>
     </div>
   );
