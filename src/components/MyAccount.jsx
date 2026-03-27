@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, MapPin, ShoppingBag, Store, LogOut, Gift, ChevronRight } from 'lucide-react';
+import { User, MapPin, ShoppingBag, Store, LogOut, Gift, ChevronRight, Palette } from 'lucide-react';
 
 export function MyAccount({ onNavigate }) {
   const accountOptions = [
@@ -39,6 +39,15 @@ export function MyAccount({ onNavigate }) {
       bgColor: 'bg-gradient-to-br from-orange-50 to-orange-100',
       iconColor: 'text-orange-600'
     },
+    {
+      id: 5,
+      title: 'Creative Hub',
+      description: 'Explore exhibitions and connect with other artists.',
+      icon: Palette,
+      action: 'creative-hub',
+      bgColor: 'bg-gradient-to-br from-pink-50 to-pink-100',
+      iconColor: 'text-pink-600'
+    },
   ];
 
   const handleCardClick = (action) => {
@@ -65,13 +74,17 @@ export function MyAccount({ onNavigate }) {
           
           {/* Account Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16">
-            {accountOptions.map((option) => {
+            {accountOptions.map((option, index) => {
               const IconComponent = option.icon;
+              // Make the last card (Creative Hub) full width on mobile
+              const isLastCard = index === accountOptions.length - 1;
               return (
                 <div
                   key={option.id}
                   onClick={() => handleCardClick(option.action)}
-                  className={`${option.bgColor} p-6 md:p-8 rounded-xl border-2 border-gray-200 hover:border-gray-400 cursor-pointer transition-all duration-300 hover:shadow-lg group`}
+                  className={`${option.bgColor} p-6 md:p-8 rounded-xl border-2 border-gray-200 hover:border-gray-400 cursor-pointer transition-all duration-300 hover:shadow-lg group ${
+                    isLastCard ? 'sm:col-span-2 lg:col-span-1' : ''
+                  }`}
                 >
                   {/* Icon */}
                   <div className={`${option.iconColor} mb-4 group-hover:scale-110 transition-transform duration-300`}>
