@@ -73,18 +73,14 @@ export function MyAccount({ onNavigate }) {
         <div className="max-w-7xl mx-auto">
           
           {/* Account Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16">
-            {accountOptions.map((option, index) => {
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6 mb-12 md:mb-16">
+            {accountOptions.map((option) => {
               const IconComponent = option.icon;
-              // Make the last card (Creative Hub) full width on mobile
-              const isLastCard = index === accountOptions.length - 1;
               return (
                 <div
                   key={option.id}
                   onClick={() => handleCardClick(option.action)}
-                  className={`${option.bgColor} p-6 md:p-8 rounded-xl border-2 border-gray-200 hover:border-gray-400 cursor-pointer transition-all duration-300 hover:shadow-lg group ${
-                    isLastCard ? 'sm:col-span-2 lg:col-span-1' : ''
-                  }`}
+                  className={`${option.bgColor} p-6 md:p-8 rounded-xl border-2 border-gray-200 hover:border-gray-400 cursor-pointer transition-all duration-300 hover:shadow-lg group`}
                 >
                   {/* Icon */}
                   <div className={`${option.iconColor} mb-4 group-hover:scale-110 transition-transform duration-300`}>
